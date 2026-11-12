@@ -27,6 +27,10 @@ DELAY = 0.5          # 🔴 한 번 받을 때마다 쉬는 시간. 줄이지 �
 def soup_of(url):
     return BeautifulSoup(requests.get(url).content, 'html.parser')
 
+def clean_views(text):
+    if text in ['-', '']:
+        return None
+    return int(text.replace(',', ''))
 
 # ── [1] 「다음」을 따라 끝까지 ───────────────────────────────
 #  while 문으로 첫 쪽부터 시작해 「다음」 링크를 따라가세요.
@@ -50,9 +54,30 @@ def soup_of(url):
 
 rows = []
 # ← 여기에 while 문을 쓰세요
+url = BASE
+while url:
+    soup = soup_of(url)
 
-print('[1]', ...)          # ← 고치세요
+    for c in soup.select('.card'):
+        a = c.select_one('a')
+        rows.append({
+            # 링크에서 숫자 빼오기
+            'source_id': int(re.search(r'article/(\d+)\.html', a['href']).group(1)),
+            'title': a.get_text(strip=True),
+            'section': c.select_one('.badge').get_text(strip=True),
+            'reporter': c.select_one('.reporter').get_text(strip=True),
+            'published_at': c.select_one('time').get('datetime'),
+            'views': clean_views(c.select_one('.views').get_text())
+        })
 
+    nxt = next(
+            (b for b in soup.select('.pager .btn') if b.get_text(strip=True) == '다음'), 
+            None
+        )
+
+    url = (BASE + nxt.get('href')) if nxt else None
+    time.sleep(DELAY)
+print('[1]', len(rows))
 
 # ── [2] 조회수를 숫자로 ─────────────────────────────────────
 #  화면의 조회수는 '3,562' 처럼 **쉼표가 있는 글자**입니다.
