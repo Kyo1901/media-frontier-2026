@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File01_입력양식.html</title>
+    <style>body {height:3000px;}</style>
+</head>
+<body>
+    <!-- 제목 태그 -->
+    <h1>입력 양식 태그</h1>
+    <p>웹 서비스를 이용하는 사용자로부터 입력을 받기 위한 양식</p>
+    <p>기사 작성 양식, 메일 작성 양식, 로그인 양식, 회원 가입 양식</p>
+    <ul>
+        <li>form 태그</li>
+        <li>input 태그</li>
+        <li>label 태그</li>
+        <li>button 태그</li>
+        <li>select 태그</li>
+        <li>입력 요소들의 속성(attribute)</li>
+    </ul>
+    <hr>
+
+    <form action="server_path" method="get">
+        <!-- type: 입력 타입(형태) -->
+        <!-- name: 입력 값에 붙여지는 이름 -->
+        <label for="plain">평문: </label>
+        <input 
+            type="text"
+            id="plain" 
+            name="plain"
+            autocomplete="off"
+            placeholder="평문을 입력하세요."> <br>
+        <input type="password"> <br>
+        <input type="search"> <br> 
+        <!-- → 모바일에서 키보드가 검색용 키보드로 바뀜 -->
+        <input type="email"> <br>
+        <!-- → 이메일 형식으로 입력을 해야한다. -->
+        <input type="number" min="0" max="100"> <br>
+        <input type="range" min="0" max="150"> <br>
+        <input type="date"> <br>
+
+        <!-- 체크 박스 -->
+        <!--  - ON/OFF 를 하기 위한 요소 -->
+        <!--  - 다수의 항목 중 여러 항목을 선택하기 위한 요소 -->
+        <input type="checkbox" name="saved_check"> 로그인 상태 저장 <br>
+
+        <h3>희망 수강 과목</h3>
+        <input type="checkbox" name="lecture_check" value="python"> 파이썬<br>
+        <input type="checkbox" name="lecture_check" value="python_analysis"> 데이터 분석<br>
+        <input type="checkbox" name="lecture_check" value="machine_learning"> 머신러닝<br>
+        <input type="checkbox" name="lecture_check" value="database"> 데이터베이스<br>
+        <input type="checkbox" name="lecture_check" value="web_language"> HTML/CSS/JavaScript<br>
+        <!-- value 속성: 서버에 전달할 값 -->
+
+        <!-- 라디오 버튼 -->
+        <!--  - 다수의 항목 중 하나의 항목만을 선택하기 위한 요소 -->
+        <!--  - name 속성이 동일한 요소들 중 하나만이 선택 -->
+        <input type="radio" name="yesOrNo" value="y"> Yes <br>
+        <input type="radio" name="yesOrNo" value="n"> No <br>
+
+        <!-- 박스 + 레이블 -->
+        <input type="checkbox" name="saved_check" id="saved-check"> 
+        <label for="saved-check">로그인 상태 저장</label> <br>
+
+        <!-- 선택지 -->
+        <!--  - 다수의 항목 중 하나를 선택하기 위한 목록 -->
+        <h3>난이도</h3>
+        <select name="difficulty">
+            <option value="height">상</option>
+            <option value="middle">중</option>
+            <option value="low">하</option>
+        </select>
+        <br>
+
+        <!-- 전송 -->
+        <input type="submit">
+    </form>
+    
+
+
+    
+</body>
+</html>

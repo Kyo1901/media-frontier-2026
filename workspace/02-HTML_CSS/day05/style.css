@@ -1,0 +1,120 @@
+/* ============================================================
+   실습 ④ — 뉴스 카드 목록 (Flexbox)
+
+   🔴 어제(3일차) style.css 를 이어서 씁니다.
+      아래는 어제 답의 요약입니다 — 자기 것을 쓰고 싶으면 바꿔도 됩니다.
+   🔴 list.html 은 한 글자도 안 고칩니다.
+   🔴 Live Server 를 깔았으면 저장만 해도 화면이 바뀝니다.
+   ============================================================ */
+
+/* ── 어제까지 (그대로 두세요) ───────────────────────────── */
+/* 🔴 어제 정답과 한 곳이 다릅니다 — .content·.search 의 max-width 를
+   720px 에서 960px 로 넓혔습니다. 오늘 카드를 2열로 놓기 위해서입니다.
+   어제 자기 파일을 쓰고 싶으면 그 값만 960 으로 바꾸십시오. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, "Malgun Gothic", sans-serif;
+  line-height: 1.6;
+  background: #f5f5f5;
+  color: #333;
+}
+
+ul { list-style: none; }
+a  { color: inherit; text-decoration: none; }
+
+.site-header { background: #1f5065; color: #fff; padding: 16px; font-size: 20px; font-weight: 700; }
+.site-nav    { background: #2a4553; color: #fff; padding: 12px 16px; }
+.search      { max-width: 960px; margin: 0 auto; padding: 16px; }
+.content     { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+.card        { background: #fff; padding: 16px; border: 1px solid #ddd; }
+.card a      { font-size: 18px; font-weight: 600; }
+.card dl     { font-size: 14px; color: #777; }
+h1           { font-size: 28px; margin-bottom: 16px; }
+
+
+/* ── 오늘 ─────────────────────────────────────────────── */
+
+/* [1] 메뉴를 가로로 놓으세요.
+       · 어디에 걸어야 할까요? li 입니까 ul 입니까?
+       · 간격은 margin 말고 gap 으로 */
+.site-nav ul { 
+   /* Flex Container로 지정 */
+   display: flex;
+   /* Flex Item 간격 */
+   gap: 16px;
+
+   /* justify-content: space-around; */
+}
+
+
+
+/* [2] 검색 폼을 한 줄로, 세로 가운데 정렬하세요.
+       · .search 에 display 와 align-items
+       · 사이 간격도 gap 으로
+       🔴 이미 한 줄로 보이지만, 지금은 그냥 인라인이라 간격도 정렬도 못 맞춥니다. */
+.search {
+   display: flex;
+   /* 교차축(세로) 중앙 정렬 */
+   align-items: center;
+   gap: 8px;
+}
+
+
+
+/* [3] 카드 안의 기자·발행·조회를 한 줄로 붙이세요.
+       · .card dl 에 display 와 gap
+       · 🔴 flex-wrap 을 같이 주세요 — 화면이 좁아지면 넘칩니다
+       카드 높이가 197px 에서 얼마로 줄었습니까?  ___ px
+       (F12 로 .card 를 검사하면 나옵니다) */
+.card dl {
+   display: flex;
+   gap: 6px;
+   
+   /* 공간 부족할 경우 Item 을 내린다. */
+   flex-wrap: wrap;
+}
+
+
+
+/* ★ [4] 기사 목록을 가로 2~3열로 만드세요.
+       · 카드를 감싸는 ul 에 display: flex
+       · 🔴 flex-wrap: wrap 이 없으면 카드가 짜부라집니다
+       · 카드 하나의 폭을 정해야 합니다 — .card 에 width
+         힌트: 두 열이면 대략 (전체폭 - gap) / 2
+       · margin-bottom 은 이제 필요 없습니다. gap 이 대신합니다 */
+.content > ul {
+   /* 카드들을 나열 */
+   display: flex;
+
+   /* 2열이상으로 만들며, 2행 이상일 경우 */
+   /* flex-wrap 속성을 필수로 설정해야한다. */
+   flex-wrap: wrap;
+
+   gap: 16px;
+}
+.content > ul > .card {
+   /* width: 50% - 8px ; */
+   /* → 기본적으로 다른 단위와 계산이 되지 않는다. */
+   /* width: calc(50% - 8px); */
+   /* → 서로 다른 단위 값들을 계산하여 px 값으로 반환 */
+
+   /* 3열 이상으로 확장을 고려하여 100% 를 기준으로 계산 */
+   /* 카드 하나 크기 = (100% - 간격px * 간격개수) / 카드개수; */
+
+   width: calc((100% - 16px * 1) / 2);
+}
+
+
+
+/* ★★ 더 해볼 사람에게
+       ① .card dl 에 justify-content: space-between 을 줘보세요.
+          기자는 왼쪽, 조회수는 오른쪽으로 벌어집니다.
+          🔴 .site-header 에 걸어도 아무 일이 안 일어납니다 — 안에 아이템이 하나뿐이라서입니다.
+       ② .content > ul 에 flex-direction: column 과 height: 800px 을 같이 주고
+          justify-content: center 가 어떻게 달라지는지 보세요. (과제 2번입니다)
+          🔴 height 를 안 주면 1px 도 안 움직입니다 — 왜 그럴까요?
+       ③ 창을 좁혔다 넓혔다 해보세요. 카드가 몇 열까지 줄었다 늘었다 합니까? */
+.card dl {
+   justify-content: space-between;
+}

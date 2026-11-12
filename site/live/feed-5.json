@@ -1,0 +1,166 @@
+{
+  "page": 5,
+  "items": [
+    {
+      "id": 420,
+      "title": "주거 제도 개선 요구",
+      "section": "사회",
+      "reporter": "이지민",
+      "published_at": "2026-08-28 16:34:22",
+      "views": 4918
+    },
+    {
+      "id": 419,
+      "title": "여당, 외교 현안 관련 입장 발표",
+      "section": "정치",
+      "reporter": "이서연",
+      "published_at": "2026-08-28 16:25:04",
+      "views": 6852
+    },
+    {
+      "id": 418,
+      "title": "지자체 지역 안전 대책 발표",
+      "section": "사회",
+      "reporter": "조도현",
+      "published_at": "2026-08-28 11:58:00",
+      "views": 168862
+    },
+    {
+      "id": 417,
+      "title": "예산안 논의 본격화",
+      "section": "정치",
+      "reporter": "이서연",
+      "published_at": "2026-08-28 11:16:40",
+      "views": 2613
+    },
+    {
+      "id": 416,
+      "title": "주전 선수 개막전 9대 1 승리",
+      "section": "스포츠",
+      "reporter": "김준영",
+      "published_at": "2026-08-28 09:52:01",
+      "views": 1005
+    },
+    {
+      "id": 415,
+      "title": "고용 시장 전망 엇갈려",
+      "section": "경제",
+      "reporter": "김지훈",
+      "published_at": "2026-08-27 20:10:01",
+      "views": 2836
+    },
+    {
+      "id": 414,
+      "title": "새 시즌 개막전 39대 1 승리",
+      "section": "스포츠",
+      "reporter": "장태윤",
+      "published_at": "2026-08-27 17:28:48",
+      "views": 2337
+    },
+    {
+      "id": 413,
+      "title": "물가 시장 전망 엇갈려",
+      "section": "경제",
+      "reporter": "장태윤",
+      "published_at": "2026-08-27 16:19:42",
+      "views": 2355
+    },
+    {
+      "id": 412,
+      "title": "여야 법 개정 놓고 공방",
+      "section": "정치",
+      "reporter": "이서연",
+      "published_at": "2026-08-27 09:24:28",
+      "views": 4811
+    },
+    {
+      "id": 411,
+      "title": "야당, 인사 관련 입장 발표",
+      "section": "정치",
+      "reporter": "조채원",
+      "published_at": "2026-08-26 12:13:39",
+      "views": 2373
+    },
+    {
+      "id": 410,
+      "title": "부동산 지수 37% 변동",
+      "section": "경제",
+      "reporter": "김지훈",
+      "published_at": "2026-08-26 11:10:09",
+      "views": 2714
+    },
+    {
+      "id": 409,
+      "title": "안전 관련 신고 급증",
+      "section": "사회",
+      "reporter": "김예은",
+      "published_at": "2026-08-25 15:59:59",
+      "views": 1909
+    },
+    {
+      "id": 408,
+      "title": "여당 개편안 국회 제출",
+      "section": "정치",
+      "reporter": "조채원",
+      "published_at": "2026-08-25 15:28:27",
+      "views": 10325
+    },
+    {
+      "id": 407,
+      "title": "지자체 지역 교통 대책 발표",
+      "section": "사회",
+      "reporter": "조도현",
+      "published_at": "2026-08-25 15:02:07",
+      "views": 3214
+    },
+    {
+      "id": 406,
+      "title": "금리 정책 발표에 업계 촉각",
+      "section": "경제",
+      "reporter": "장지민",
+      "published_at": "2026-08-25 14:01:25",
+      "views": 7173
+    },
+    {
+      "id": 405,
+      "title": "여야 예산안 놓고 공방",
+      "section": "정치",
+      "reporter": "조채원",
+      "published_at": "2026-08-25 09:58:00",
+      "views": 2197
+    },
+    {
+      "id": 404,
+      "title": "물가 수출 47% 증가",
+      "section": "경제",
+      "reporter": "장지민",
+      "published_at": "2026-08-24 14:15:38",
+      "views": 3762
+    },
+    {
+      "id": 403,
+      "title": "통신사 신기술 공개",
+      "section": "IT",
+      "reporter": "권민준",
+      "published_at": "2026-08-21 22:52:01",
+      "views": 2038
+    },
+    {
+      "id": 402,
+      "title": "플랫폼 서비스 개편",
+      "section": "IT",
+      "reporter": "오수빈",
+      "published_at": "2026-08-21 15:02:46",
+      "views": 2608
+    },
+    {
+      "id": 401,
+      "title": "리그 일정 개막전 7대 1 승리",
+      "section": "스포츠",
+      "reporter": "장태윤",
+      "published_at": "2026-08-21 10:42:17",
+      "views": 4077
+    }
+  ],
+  "next": null
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File03_선택자.html</title>
+    <style>
+        /* 모든 p 태그들의 스타일이 적용 */
+        /* p { color: navy; } */
+
+        /* section 의 본문 스타일을 적용 */
+        /*  → 각 p 태그에 class 를 설정하기에는 반복 작업 */
+        /*  → 이를 해결하기 위해 "연결 선택자" */
+
+        /* 자식 선택자 */
+        /*  → 자손에 위치한 요소를 선택하는 선택자 */
+        /*  → 바로 하위에 포함된 요소를 선택 */
+        /*  → 선택자 형식: 상위_선택자 > 하위_선택자 */
+        /* section : 부모 = 상위 */
+        /* h3, p   : 자식 = 하위 */
+        section > p {
+            color: maroon;
+        }
+
+        /* header 영역 내의 h2 요소에 밑줄을 표시 */
+        /*  - 스타일 속성: text-decoration:underline; */
+        header > h2 {
+            text-decoration: underline;
+        }
+
+        /* nav 안에 있는 링크의 밑 줄을 제거 */
+        nav > a { text-decoration: none; }
+        /* → 바로 하위에 위치한 a 요소를 선택 */
+
+        /* 후손 선택자 */
+        /*  - 후손에 위치한 요소를 선택 */
+        /*  - 하위에 깊이 상관 없이 요소를 선택 */
+        /*  - 선택자 형식: 조상_선택자 후손_선택자 */
+        /* nav: 조상 요소 */
+        /* a  : 후손 요소 */
+        nav a { text-decoration: none; }
+        /* nav 내의 a 요소를 선택 */
+
+        /* 중첩이 많은 구조일 수록 접근할 때 쉽게 접근이 가능 */
+        nav .service a { color: green; }
+        /* → 네비게이션 내의 서비스 항목의 링크 */
+        nav .auth a { color:palevioletred; }
+        /* → 네비게이션 내의 인증 항목의 링크 */
+
+
+        /* 형제 선택자 */
+        /*  - 형제 선택자 */
+        /*     - 기준 요소 다음에 위치한 형제 요소를 선택 */
+        /*     - 선택자 형식: 기준_선택자 ~ 형제_선택자 */
+        /*  - 인접 형제 선택자 */
+        /*     - 기준 요소 바로 다음에 위치한 형제 요소를 선택 */
+        /*     - 선택자 형식: 기준_선택자 + 형제_선택자 */
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>자식 선택자와 후손 선택자</h2>
+        <p>
+            두 선택자를 통해 한 요소를 선택할 수 있으며,
+            상위 요소 안에 포함된 하위 요소를 선택한다.
+        </p>
+    </header>
+    <section>
+        <h3>첫 번째 섹션의 제목입니다.</h3>
+        <p>
+            첫 번째 섹션의 본문 내용입니다.
+        </p>
+    </section>
+    <section>
+        <h3>두 번째 섹션의 제목입니다.</h3>
+        <p>
+            두 번째 섹션의 본문 내용입니다.
+        </p>
+    </section>
+    <section>
+        <h3>세 번째 섹션의 제목입니다.</h3>
+        <p>
+            세 번째 섹션의 본문 내용입니다.
+        </p>
+    </section>
+    
+
+    <nav>
+        <div class="wrap">
+            <ul class="service">
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+            </ul>
+            <ul class="auth">
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 
+        마크업할 때 선택자 일부를 이용하여 마크업을 빠르게 할 수 있다.
+         → 태그 선택자
+         → id 선택자
+         → class 선택자
+         → 자식 선택자
+         → 인접 형제 선택자
+    -->
+
+</body>
+</html>

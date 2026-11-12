@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File03_박스모델_실습.html</title>
+    <style>
+
+        /* [실습] 아래 주석의 지시대로 CSS 를 작성하세요. */
+
+        body { padding: 0 20px; }
+
+        /* 1. 모든 카드(.card) */
+        /*   - 너비 300px */
+        /*   - 내부 여백 상하좌우 16px */
+        /*   - 2px 두께의 gray 색 실선 테두리 */
+        /*   - 외부 여백 위아래 12px, 좌우 0 (값 두 개로) */
+        /*   - 배경색 white */
+        .card {
+            width: 300px;
+            padding: 16px;
+            border: 2px solid gray;
+            margin: 12px 0;
+            background-color: white;
+        }
+
+        /* 2. 카드 제목(.card-title) */
+        /*   - 글자색 navy */
+        /*   - 밑줄 */
+        /*   - 위쪽 외부 여백 0 */
+        /*   + 밑줄 대신 제목과 주제 사이에 선을 긋기 위해 */
+        /*     하단 테두리를 설정 */
+        .card-title{
+            color: navy;
+            /* text-decoration: underline; */
+            margin-top: 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid navy;
+        }
+
+        /* 3. 수강 중인 카드(.card.current) */
+        /*   - 배경색 lightyellow */
+        /*   - 3px 두께의 orange 색 점선 테두리 */
+        .card.current {
+            background-color: lightyellow;
+            border: 3px dotted orange;
+        }
+
+
+        /* 4. 수강 완료 카드(.card.done) */
+        /*   - 글자색 gray */
+        /*   - 내부 여백: 위 8px, 좌우 16px, 아래 8px (값 세 개로) */
+        .card.done {
+            color: gray;
+            padding: 8px 16px 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>나의 수강 현황</h1>
+
+    <div class="card done">
+        <h3 class="card-title">데이터베이스</h3>
+        <ul>
+            <li>MySQL 시작하기</li>
+            <li>데이터 조회</li>
+            <li>JOIN</li>
+        </ul>
+    </div>
+
+    <div class="card current">
+        <h3 class="card-title">HTML/CSS</h3>
+        <ul>
+            <li>HTML 기본 태그</li>
+            <li>CSS 선택자</li>
+            <li>박스 모델</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3 class="card-title">크롤링</h3>
+        <ul>
+            <li>requests</li>
+            <li>BeautifulSoup</li>
+            <li>DB에 저장</li>
+        </ul>
+    </div>
+</body>
+</html>

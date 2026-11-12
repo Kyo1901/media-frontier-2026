@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar-practice.html</title>
+    <style>
+
+        /* ============================================ */
+        /* [실습] 네비게이션 바 만들기                   */
+        /* ============================================ */
+        /*  목표: 왼쪽에 메뉴 5개, 오른쪽에 메뉴 3개 */
+        /* */
+        /*  ┌──────────────────────────────────────────────┐ */
+        /*  │ 홈 정치 경제 사회 문화        검색 로그인 회원가입 │ */
+        /*  └──────────────────────────────────────────────┘ */
+        /* */
+        /*  힌트: 플렉스 박스를 «두 번» 쓴다 */
+        /*   - 바깥(nav)    : 왼쪽 묶음과 오른쪽 묶음을 양 끝으로 */
+        /*   - 안쪽(ul 두 개): 각 묶음 안의 메뉴를 가로로 */
+
+
+        /* 미리 작성됨 — 목록의 기본 점과 여백을 없앤다 (건드리지 않아도 됨) */
+        * { box-sizing: border-box; }
+        body { margin: 0; }
+        ul { list-style: none; margin: 0; padding: 0; }
+
+
+        /* 1. 네비게이션 바(.navbar) */
+        /*   - 배경색 navy */
+        /*   - 높이 60px */
+        /*   - 내부 여백 좌우 24px, 위아래 0 (값 두 개로) */
+        /*   - 플렉스 컨테이너로 만들기 */
+        /*   - 왼쪽 묶음은 왼쪽 끝, 오른쪽 묶음은 오른쪽 끝으로 (주축 정렬) */
+        /*   - 두 묶음을 세로 가운데로 (교차축 정렬) */
+        .navbar {
+            background-color: navy;
+            height: 60px;
+            padding: 0 24px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 2. 왼쪽 메뉴 묶음(.menu-left) */
+        /*   - 메뉴 5개를 가로로 */
+        /*   - 메뉴 사이 간격 24px */
+        .navbar > ul { display: flex; }
+        .menu-left {
+            gap: 24px;
+        }
+
+        /* 3. 오른쪽 메뉴 묶음(.menu-right) */
+        /*   - 메뉴 3개를 가로로 */
+        /*   - 메뉴 사이 간격 16px */
+        .menu-right {
+            gap: 16px;
+        }
+
+        /* 4. 메뉴 링크(.navbar a) */
+        /*   - 글자색 white */
+        /*   - 밑줄 없애기 */
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            /* = 내부 문자를 한 줄로 표시 */
+        }
+
+
+        /* 5. ★ 도전 — 회원가입 버튼(.btn) */
+        /*   - 배경색 white, 글자색 navy */
+        /*   - 내부 여백 위아래 6px, 좌우 14px */
+        /*   - 모서리 둥글게 16px */
+        .navbar .btn {
+            background-color: white;
+            color:navy;
+            padding: 6px 14px;
+            border-radius: 16px;
+        }
+
+        /* a 항목에 마우스 올렸을 때 */
+        /*  글자색: skyblue */
+        /*  밑줄 표시 */
+        .navbar a:hover {
+            color: skyblue;
+            text-decoration: underline;
+        }
+
+        /* 회원가입에 마우스 올렸을 때 */
+        /*  배경색: skyblue */
+        /*  글자색: navy */
+        /*  밑줄 미표시 */
+        .navbar .btn:hover {
+            background-color: skyblue;
+            color: navy;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul class="menu-left">
+            <li><a href="#">홈</a></li>
+            <li><a href="#">정치</a></li>
+            <li><a href="#">경제</a></li>
+            <li><a href="#">사회</a></li>
+            <li><a href="#">문화</a></li>
+        </ul>
+        <ul class="menu-right">
+            <li><a href="#">검색</a></li>
+            <li><a href="#">로그인</a></li>
+            <li><a href="#" class="btn">회원가입</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>

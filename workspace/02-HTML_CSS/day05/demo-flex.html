@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Flexbox 시연 — 슬라이드 19·25</title>
+<style>
+  /* 🔴 슬라이드 19·25 의 숫자를 그대로 재현하는 시연판입니다.
+     강사가 값을 바꿔가며 보여주는 용도이고, 훈련생에게 나눠줘도 됩니다. */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, "Malgun Gothic", sans-serif; padding: 20px; background: #f5f5f5; }
+  h2 { font-size: 16px; margin: 16px 0 6px; color: #333; }
+  code { background: #eee; padding: 1px 5px; }
+
+  .box  { width: 600px; height: 100px; border: 2px solid #333; background: #fff; }
+  .box > div { width: 80px; height: 40px; background: #cfe3ee; border: 1px solid #7aa; text-align: center; }
+
+  .a { display: flex; }
+  .b { display: flex; justify-content: center; }
+  .c { display: flex; justify-content: space-between; }
+  .d { display: flex; align-items: center; }
+
+  /* 25번 — 좁은 상자에 wrap */
+  .w { display: flex; flex-wrap: wrap; width: 200px; height: auto; }
+</style>
+</head>
+<body>
+
+<h2>① 기본 — <code>display: flex</code></h2>
+<div class="box a"><div>1</div><div>2</div><div>3</div></div>
+
+<h2>② <code>justify-content: center</code></h2>
+<div class="box b"><div>1</div><div>2</div><div>3</div></div>
+
+<h2>③ <code>justify-content: space-between</code></h2>
+<div class="box c"><div>1</div><div>2</div><div>3</div></div>
+
+<h2>④ <code>align-items: center</code> — 교차축</h2>
+<div class="box d"><div>1</div><div>2</div><div>3</div></div>
+
+<h2>⑤ <code>flex-wrap: wrap</code> — 200px 상자에 80px 셋</h2>
+<div class="box w"><div>1</div><div>2</div><div>3</div></div>
+
+</body>
+</html>

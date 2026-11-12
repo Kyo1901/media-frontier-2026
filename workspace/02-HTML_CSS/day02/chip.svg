@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" width="480" height="270" aria-label="반도체 웨이퍼 위에 칩이 격자로 배열된 모습을 단순하게 그린 그림">
+  <rect width="480" height="270" fill="#1B2731"/>
+  <circle cx="240" cy="135" r="105" fill="#20323D" stroke="#5CC6DE" stroke-width="2"/>
+  <g fill="#2A4553" stroke="#6D869A" stroke-width="1">
+    <rect x="170" y="70"  width="42" height="42" rx="3"/>
+    <rect x="222" y="70"  width="42" height="42" rx="3"/>
+    <rect x="274" y="70"  width="42" height="42" rx="3"/>
+    <rect x="170" y="122" width="42" height="42" rx="3"/>
+    <rect x="222" y="122" width="42" height="42" rx="3"/>
+    <rect x="274" y="122" width="42" height="42" rx="3"/>
+    <rect x="170" y="174" width="42" height="42" rx="3"/>
+    <rect x="222" y="174" width="42" height="42" rx="3"/>
+    <rect x="274" y="174" width="42" height="42" rx="3"/>
+  </g>
+  <rect x="222" y="122" width="42" height="42" rx="3" fill="#1F5065" stroke="#5CC6DE" stroke-width="2"/>
+  <text x="240" y="252" text-anchor="middle" fill="#9DB0BE"
+        font-family="'Pretendard Variable',Pretendard,'Malgun Gothic',sans-serif" font-size="15">실습용 그림 · 반도체 웨이퍼</text>
+</svg>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File02_CSS.html</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS 를 통해 스타일 시트를 작성하는 영역 */
+        
+        /* h1 의 글자색(color)을 노란색으로 설정 */
+        h1 { color: rgb(99, 155, 219); }
+
+        /* h2 의 글자색을 녹색(yellowgreen)으로 설정 */
+        h2 {
+            color: yellowgreen;
+        }
+
+
+        /* 선택자(selector) */
+        /*  - 요소를 선택하기 위한 지정자 */
+        /*  - 기본 선택자 */
+        /*     → 태그 선택자:   태그 이름을 가지고 선택 */
+        /*     → ID 선택자:    id 속성을 가지고 선택 */
+        /*     → Class 선택자: class 속성을 가지고 선택  */
+
+        /* class 선택자 */
+        /*  - 요소의 스타일을 지정하기 위해  */
+        /*    요소를 지정할 수 있도록 이름 또는 그룹을 부여 */
+        /*  - 선택자 형식: ".클래스명" */
+        /*  - 한 요소에 여러 클래스를 부여할 수 있다. */
+        /*  - 여러 요소에 동일한 클래스를 부여할 수 있다. */
+        .active { color: paleturquoise; }
+        .highlight { text-decoration: underline; }
+
+        /* id 선택자 */
+        /*  - HTML 요소 내에서 한 요소만을 식별하기 위한 수단 */
+        /*  - 선택자 형식: "#ID명" */
+        #css-header { font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1 id="css-header">CSS(Cascading Style Sheet)</h1>
+    <h2>HTML 문서에 스타일 적용하기</h2>
+    <ul>
+        <li class="active highlight">선택자</li>
+        <li>스타일 속성</li>
+        <li class="active">Flex & Grid</li>
+        <li>반응형 웹</li>
+    </ul>
+</body>
+</html>

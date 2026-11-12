@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>경제 — 뉴스</title>
+</head>
+<body>
+
+<!-- ============================================================
+     실습 ⑥ — 최종 산출물입니다.
+     🔴 이 파일은 안 고칩니다. style.css 에만 씁니다.
+     🔴 어제(5일차) 것과 다른 곳은 세 가지뿐입니다:
+        · 카드마다 <span class="badge"> 가 하나씩 붙었습니다
+        · 검색 단추에 class="btn" 이 붙었습니다
+        · 링크가 같은 폴더의 article.html 을 가리킵니다
+     ============================================================ -->
+
+<div class="page">
+
+<header class="site-header">
+  뉴스
+</header>
+
+<nav class="site-nav">
+  <ul>
+    <li>정치</li>
+    <li>경제</li>
+    <li>사회</li>
+    <li>문화</li>
+    <li>스포츠</li>
+    <li>IT</li>
+  </ul>
+</nav>
+
+<form class="search" action="#">
+  <label for="q">검색어</label>
+  <input type="text" id="q" name="q">
+
+  <label for="sec">섹션</label>
+  <select id="sec" name="section">
+    <option value="">전체</option>
+    <option value="경제">경제</option>
+    <option value="정치">정치</option>
+  </select>
+
+  <button type="submit" class="btn">찾기</button>
+</form>
+
+<main class="content">
+
+  <h1>경제</h1>
+
+  <ul>
+    <li class="card">
+      <span class="badge">경제</span>
+      <a href="article.html">환율 정책 발표에 업계 촉각</a>
+      <dl>
+        <dt>기자</dt><dd>이지민</dd>
+        <dt>발행</dt><dd>2026-09-28 22:40</dd>
+        <dt>조회</dt><dd>1,039</dd>
+      </dl>
+    </li>
+    <li class="card">
+      <span class="badge">경제</span>
+      <a href="article.html">고용 수출 22% 증가</a>
+      <dl>
+        <dt>기자</dt><dd>장지민</dd>
+        <dt>발행</dt><dd>2026-09-28 16:56</dd>
+        <dt>조회</dt><dd>7,138</dd>
+      </dl>
+    </li>
+    <li class="card">
+      <span class="badge">경제</span>
+      <a href="article.html">금리 지수 31% 변동</a>
+      <dl>
+        <dt>기자</dt><dd>장지민</dd>
+        <dt>발행</dt><dd>2026-09-27 22:33</dd>
+        <dt>조회</dt><dd>3,748</dd>
+      </dl>
+    </li>
+    <li class="card">
+      <span class="badge">경제</span>
+      <a href="article.html">물가 수출 35% 증가</a>
+      <dl>
+        <dt>기자</dt><dd>김지훈</dd>
+        <dt>발행</dt><dd>2026-09-23 22:38</dd>
+        <dt>조회</dt><dd>16,311</dd>
+      </dl>
+    </li>
+    <li class="card">
+      <span class="badge">경제</span>
+      <a href="article.html">환율 지수 31% 변동</a>
+      <dl>
+        <dt>기자</dt><dd>장예은</dd>
+        <dt>발행</dt><dd>2026-09-22 09:11</dd>
+        <dt>조회</dt><dd>2,826</dd>
+      </dl>
+    </li>
+    <li class="card">
+      <span class="badge">경제</span>
+      <a href="article.html">환율 지수 22% 변동</a>
+      <dl>
+        <dt>기자</dt><dd>김지훈</dd>
+        <dt>발행</dt><dd>2026-09-21 18:41</dd>
+        <dt>조회</dt><dd>3,098</dd>
+      </dl>
+    </li>
+  </ul>
+
+  <img src="images/chip.svg" alt="반도체 웨이퍼 위에 칩이 격자로 배열된 모습">
+
+  <section class="stats">
+    <h2>섹션별 기사 수</h2>
+    <table>
+      <thead>
+        <tr><th>섹션</th><th>기사 수</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>정치</td><td>115</td></tr>
+        <tr><td>사회</td><td>121</td></tr>
+        <tr><td>경제</td><td>88</td></tr>
+        <tr><td>스포츠</td><td>80</td></tr>
+        <tr><td>IT</td><td>52</td></tr>
+        <tr><td>문화</td><td>44</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<aside class="side">
+  <h2>많이 본 기사</h2>
+  <ul>
+    <li><a href="article.html">반도체 정책 발표에 업계 촉각</a></li>
+    <li><a href="article.html">지자체 지역 안전 대책 발표</a></li>
+    <li><a href="article.html">대표팀 감독 교체</a></li>
+  </ul>
+</aside>
+
+<footer>
+  © 2026 뉴스
+</footer>
+
+</div>
+
+</body>
+</html>

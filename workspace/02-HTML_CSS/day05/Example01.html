@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 01</title>
+    <style>
+        /* 모든 요소를 border-box 로 계산 */
+        * { box-sizing: border-box; }
+        body { margin: 0; background-color: whitesmoke; }
+
+        /* 상단바 */
+        /*  제목: 왼쪽에 배치 */
+        /*  메뉴: 오른쪽에 배치 */
+        .top-bar {
+            background-color: navy;
+            color:white;
+            padding: 0 24px;
+            height: 64px;
+
+            /* 제목과 메뉴를 나란히 배치 */
+            display: flex;
+
+            /* 두 item 을 양 끝에 배치 */
+            justify-content: space-between;
+
+            /* 교차축 중앙 정렬 */
+            align-items: center;
+        }
+        .top-bar > h1 { margin: 0; }
+
+        /* 상단바: Flex Container */
+        /* 메뉴  : 상단바의 Flex Item, Flex Container */
+        .nav-menu {
+            /* a 요소들의 Flex Container */
+            display: flex;
+            gap: 16px;
+        }
+        .top-bar a { 
+            color:white;
+            text-decoration: none;
+        }
+
+        /* 요약 통계 카드 */
+        .summary { 
+            display: flex;
+            gap: 16px;
+            padding: 24px;
+        }
+        .stat {
+            background-color: white;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            padding: 16px;
+
+            /* Flex Item 에 설정하는 Flex 관련 속성 */
+            /*  flex-grow: "남은 공간을 할당"받는 비율 */
+            /*  flex-shrink: 공간이 부족할 경우 축소할 비율 */
+            /*  flex-basis: 요소의 주축 방향의 크기 */
+            /*  flex: grow shrink basis 순으로 한 번에 설정하는 속성 */
+            flex-grow: 1;
+            /* 만약 모든 통계 카드를 동일한 크기로 맞추고 싶다면 */
+            /* 요소의 크기를 0 으로 설정 */
+            flex-basis: 0;
+
+            /* 모든 Item 요소들의 크기를 균등하게 설정 */
+            flex: 1 0 0;
+            flex: 1;
+            /* → 값 1개만 전달할 경우 grow 만 1로 설정 */
+            /*   shrink 는 기본 값인 1로 설정 */
+            /*   basis 는 0 으로 설정 */
+
+            /* 텍스트 정렬: 중앙 */
+            /* text-align: center; */
+
+            /* flex 를 통해 숫자와 라벨을 세로로 쌓고 중앙 정렬 */
+            display: flex;
+            flex-direction: column; 
+            /* 주축이 세로(↓)로 바뀐다. */  
+            align-items: center;
+            /* 교차축도 가로(→)로 바뀐다. */
+            /* 교차축의 중앙 정렬 */
+        }
+        .stat-number { font-size: 32px; color:navy; }
+        .stat-label { color:gray; }
+
+    </style>
+</head>
+<body>
+    <!-- 상단바 -->
+    <header class="top-bar">
+        <!-- 웹페이지 제목 -->
+        <h1>웹툰 평점 분석</h1>
+        <!-- GNB(Global Navigation Bar) -->
+        <!--  - 모든 서비스 페이지에서 사용되는 네비게이션 -->
+        <nav class="nav-menu">
+            <!-- FlexBox 실습을 위해 간소화하여 작성 -->
+            <a href="#">소개</a>
+            <a href="#">차트</a>
+            <a href="#">결론</a>
+        </nav>
+    </header>
+
+    <!-- 요약 카드 -->
+    <section class="summary">
+        <div class="stat">
+            <div class="stat-number">500</div>
+            <div class="stat-label">분석한 작품 수</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">12</div>
+            <div class="stat-label">장르</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">9.4</div>
+            <div class="stat-label">평균 평점</div>
+        </div>
+    </section>
+
+</body>
+</html>
