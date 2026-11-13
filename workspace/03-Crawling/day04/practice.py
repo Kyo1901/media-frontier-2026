@@ -102,7 +102,17 @@ print('[4]', ok_admin, r_admin.status_code)
 #
 #  출력 형식:  [5] True 8.3
 
-# ← 여기
+t0 = time.time() # 현재 시간(s)
+
+for n in range(1, 4):
+    requests.get(urljoin(BASE, f'article/{n}.html'), headers={'User-Agent': UA})
+    time.sleep(DELAY)
+
+elapsed = time.time() - t0 # 경과 시간
+minutes = round(500 * DELAY / 60, 1) # 500건 읽는데 걸리는 시간
+
+print('[5]', elapsed >= 3 * DELAY, minutes)
+
 
 
 # ── [6] 내가 누구인지 밝힙니다 ────────────────────────────────
@@ -112,7 +122,9 @@ print('[4]', ok_admin, r_admin.status_code)
 #
 #  출력 형식:  [6] True MediaFrontier-Class/1.0 (+class practice)
 
-# ← 여기
+r = requests.get(BASE, headers={'User-Agent': UA})
+mine = r.request.headers['User-Agent']
+print('[6]', mine)
 
 
 # ── ★[7] 사전 점검기 — 🔴 월요일 미니프로젝트에서 쓸 물건입니다 ──────────────────
