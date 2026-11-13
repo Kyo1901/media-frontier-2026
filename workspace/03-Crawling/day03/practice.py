@@ -23,6 +23,7 @@ CSV = 'articles_crawled.csv'
 JSON = 'articles_crawled.json'
 DELAY = 0.01          # 🔴 한 번 받을 때마다 쉬는 시간. 줄이지 마세요
 
+os.system('cls')
 
 def soup_of(url):
     return BeautifulSoup(requests.get(url).content, 'html.parser')
@@ -51,6 +52,7 @@ def clean_views(text):
 #    views         .views 의 글자 → 아래 [2] 에서 다듬습니다
 #
 #  출력 형식:  [1] 25 500
+
 
 rows = []
 # ← 여기에 while 문을 쓰세요
@@ -95,8 +97,17 @@ print('[1]', len(rows))
 #
 #  조회수가 None 인 것이 몇 건입니까? 그리고 source_id 는 전부 다릅니까?
 #  출력 형식:  [2] 25 500
+none_views = 0
+source_ids = set() # 집합(set) → 중복된 값을 저장하지 않는다.
+for r in rows:
+    if not r['views']:  # None 인 경우 1 증가
+        none_views += 1
 
-print('[2]', ...)          # ← 고치세요
+    source_ids.add(r['source_id'])
+
+print('[2]', none_views, len(source_ids))
+# → 결측값(None)은 25개이며,
+#   고유 번호는 500개 중복 없이 모두 있다.
 
 
 # ── [3] 표로 만들어 CSV 로 넘긴다 ───────────────────────────
