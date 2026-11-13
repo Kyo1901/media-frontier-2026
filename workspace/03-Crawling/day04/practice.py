@@ -79,6 +79,7 @@ rp.read()
 DELAY = rp.crawl_delay(UA)
 ok_article = rp.can_fetch(UA, urljoin(BASE, 'article/1.html'))
 ok_admin = rp.can_fetch(UA, urljoin(BASE, 'admin/notice.html'))
+print('[3]',DELAY, ok_admin, ok_article)
 
 # ── [4] 🔴 막았는데 열립니다 ──────────────────────────────────
 #  [3] 에서 admin/notice.html 은 False 였습니다.
@@ -88,7 +89,9 @@ ok_admin = rp.can_fetch(UA, urljoin(BASE, 'admin/notice.html'))
 #
 #  🔴 이 두 값의 차이가 오늘 2차시 전체입니다. 잠깐 멈추고 생각해 보세요.
 
-# ← 여기
+r_admin = requests.get(urljoin(BASE, 'admin/notice.html'))
+
+print('[4]', ok_admin, r_admin.status_code)
 
 
 # ── [5] 간격을 지키면 얼마나 걸립니까 ─────────────────────────
