@@ -122,7 +122,12 @@ print('[2]', none_views, len(source_ids))
 #  표의 행 수 · 열 수 · 파일이 생겼는지(os.path.exists) 를 출력하세요.
 #  출력 형식:  [3] 500 6 True
 
-print('[3]', ...)          # ← 고치세요
+# dict 리스트를 DataFrame 으로 생성
+df = pd.DataFrame(rows)
+
+# csv 파일로 작성
+df.to_csv(CSV, index=False, encoding='utf-8-sig')
+print('[3]', df.shape, os.path.exists(CSV))
 
 
 # ── [4] 받는 사람처럼 다시 연다 ─────────────────────────────
@@ -136,7 +141,8 @@ print('[3]', ...)          # ← 고치세요
 #  🔴 None 은 CSV 에서 빈칸, 다시 읽으면 NaN(결측)입니다. 0 이 아닙니다.
 #     1과목의 COUNT(*) 500 · COUNT(views) 475 를 기억합니까?
 
-print('[4]', ...)          # ← 고치세요
+back = pd.read_csv(CSV)
+print('[4]', len(back), back['views'].isna().sum())
 
 
 # ── [5] 🔴 원본과 맞춰봅니다 — 오늘의 채점 ──────────────────
@@ -150,8 +156,8 @@ print('[4]', ...)          # ← 고치세요
 #  🔴 섹션 건수는 1과목(DB 5일차)에서 GROUP BY 로 본 그 숫자입니다.
 #     하나라도 다르면 어딘가 틀린 것입니다. 무엇이 다릅니까?  ______
 #     (뒤 숫자가 0 이면 — 발행시각을 어디서 꺼냈는지 보세요)
-
-print('[5]', ...)          # ← 고치세요
+top = back['section'].value_counts().head(3)
+print('[5]', ' '.join(f'{s}={n}' for s, n in top.items()))          # ← 고치세요
 
 
 # ── ★ [6] JSON 으로도 넘긴다 ───────────────────────────────
@@ -162,8 +168,8 @@ print('[5]', ...)          # ← 고치세요
 #  출력 형식:  [6] 500
 #  🔴 파일을 VS Code 로 열어 보세요. 4일차에 볼 popular.json 과 같은 모양입니다.
 #     force_ascii=False 를 빼면 한글이 어떻게 저장됩니까?
-
-print('[6]', ...)          # ← 고치세요
+df.to_json(JSON, orient='records', force_ascii=False, indent=1)
+print('[6]', len(pd.read_json(JSON)))          # ← 고치세요
 
 
 # ── ★ [7] 상세 페이지까지 ───────────────────────────────────
