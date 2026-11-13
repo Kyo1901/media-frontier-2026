@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup
 BASE = 'http://localhost:8000/'
 CSV = 'articles_crawled.csv'
 JSON = 'articles_crawled.json'
-DELAY = 0.5          # 🔴 한 번 받을 때마다 쉬는 시간. 줄이지 마세요
+DELAY = 0.01          # 🔴 한 번 받을 때마다 쉬는 시간. 줄이지 마세요
 
 
 def soup_of(url):
@@ -71,7 +71,7 @@ while url:
         })
 
     nxt = next(
-            (b for b in soup.select('.pager .btn') if b.get_text(strip=True) == '다음'), 
+            (b for b in soup.select('.pager a.btn') if b.get_text(strip=True) == '다음'), 
             None
         )
 
