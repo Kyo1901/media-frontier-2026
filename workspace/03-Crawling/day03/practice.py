@@ -18,7 +18,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-BASE = 'http://localhost:8000/'
+BASE = 'http://192.168.219.45:8000/'
 CSV = 'articles_crawled.csv'
 JSON = 'articles_crawled.json'
 DELAY = 0.01          # 🔴 한 번 받을 때마다 쉬는 시간. 줄이지 마세요
