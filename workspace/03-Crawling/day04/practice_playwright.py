@@ -25,6 +25,7 @@ with sync_playwright() as p:
     browser = p.chromium.launch(channel='chrome')   # 깔린 크롬. 창을 보고 싶으면 headless=False 를 더하세요
     page = browser.new_page()
 
+
     # ════════ 실습 ⑤-1 (3차시) — JS 가 그린 페이지 ════════
 
     # ── [1] 0 과 10 ──────────────────────────────────────────
@@ -35,7 +36,11 @@ with sync_playwright() as p:
     #
     #  출력 형식:  [1] 0 10
 
-    print('[1]', ...)          # ← 고치세요
+    page.goto(URL) # 페이지 이동
+    page.wait_for_selector('.card')  # .card 가 그려질 때 까지 대기
+    card_count = page.locator('.card').count() # 그려진 .card 의 개수 
+
+    print('[1]', card_count)
 
 
     # ── [2] 1위 제목 ─────────────────────────────────────────
@@ -45,8 +50,10 @@ with sync_playwright() as p:
     #
     #  출력 형식:  [2] 반도체 정책 발표에 업계 촉각
 
-    print('[2]', ...)          # ← 고치세요
-
+    first = page.locator('.card').first.locator('a').inner_text()
+    print('[2]', first)
+    
+    
 
     # ── [3] 열 개 전부 ───────────────────────────────────────
     #  모든 카드의 제목을 리스트로 만드세요.
@@ -55,7 +62,8 @@ with sync_playwright() as p:
     #
     #  출력 형식:  [3] 10 국가대표 결승 진출
 
-    print('[3]', ...)          # ← 고치세요
+    titles = page.locator('.card a').all_inner_texts()
+    print('[3]', len(titles), titles[-1])          # ← 고치세요
 
 
     # ── [4] JSON 과 맞춰 보기 ────────────────────────────────
@@ -67,7 +75,7 @@ with sync_playwright() as p:
 
     print('[4]', ...)          # ← 고치세요
 
-
+    
     # ════════ 실습 ⑤-2 (4차시) — 누르고 넘어간다 ════════
 
     # ── [5] 「다음」을 누른다 ────────────────────────────────
@@ -79,8 +87,13 @@ with sync_playwright() as p:
     #
     #  출력 형식:  [5] page-2.html article/21.html
     #  🔴 제목으로 확인하지 마세요 — 2쪽 첫 기사 제목이 1쪽 첫 기사와 우연히 같습니다.
+    page.goto(BASE)
+    page.get_by_text('다음').click() # 다음 글자를 글릭
+    page.wait_for_selector('.card')
+    url_end = page.url.split('/')[-1]
+    a_href = page.locator('.card a').first.get_attribute('href')
 
-    print('[5]', ...)          # ← 고치세요
+    print('[5]', url_end, a_href)          # ← 고치세요
 
 
     # ── [6] 기사로 들어간다 ──────────────────────────────────
