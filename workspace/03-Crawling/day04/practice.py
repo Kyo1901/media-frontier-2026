@@ -17,7 +17,7 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-BASE = 'http://localhost:8000/'
+BASE = 'http://192.168.219.45:8000/'
 
 # 🔴 헤더는 latin-1 로만 나갑니다. 한글을 넣으면 UnicodeEncodeError 가 납니다.
 UA = 'MediaFrontier-Class/1.0 (+class practice)'
@@ -32,8 +32,18 @@ UA = 'MediaFrontier-Class/1.0 (+class practice)'
 #
 #  출력 형식:  [1] 0 True
 
-pop_url = urljoin(BASE, 'live/popular.html')
-# ← 여기
+pop_url = urljoin(BASE, 'live/popular.html') # BASE + 'live~'
+r = requests.get(pop_url)
+soup = BeautifulSoup(r.content, 'html.parser')
+
+cards = soup.select('.card')
+
+# fetch 를 통해 json 파일을 읽어들이는지 검사
+has_fetch = 'fetch(' in r.text
+
+print('[1]', len(cards), has_fetch)
+# = 0   → .card 가 없음
+# = True → 어디선가 파일을 읽어오고 있음
 
 
 # ── [2] 그러면 그 «어디»를 직접 받습니다 ───────────────────────
@@ -45,8 +55,9 @@ pop_url = urljoin(BASE, 'live/popular.html')
 #
 #  출력 형식:  [2] 10 517185 반도체 정책 발표에 업계 촉각
 
-# ← 여기
-
+data = requests.get(urljoin(BASE, 'live/popular.json')).json()
+top = data[0]
+print('[2]', len(data), top['views'], top['title'])
 
 # ── [3] robots.txt 를 코드로 읽습니다 ─────────────────────────
 #  urllib.robotparser 는 표준 라이브러리입니다 — 설치할 것이 없습니다.
@@ -61,8 +72,13 @@ pop_url = urljoin(BASE, 'live/popular.html')
 #
 #  출력 형식:  [3] 1 True False
 
-# ← 여기
+rp = robotparser.RobotFileParser()
+rp.set_url(urljoin(BASE, 'robots.txt'))
+rp.read()
 
+DELAY = rp.crawl_delay(UA)
+ok_article = rp.can_fetch(UA, urljoin(BASE, 'article/1.html'))
+ok_admin = rp.can_fetch(UA, urljoin(BASE, 'admin/notice.html'))
 
 # ── [4] 🔴 막았는데 열립니다 ──────────────────────────────────
 #  [3] 에서 admin/notice.html 은 False 였습니다.
