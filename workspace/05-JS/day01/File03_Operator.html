@@ -75,7 +75,24 @@
         // console.log(true);
 
         // 논리 연산자
+        //  - 파이썬과 동일한 의미를 가진 연산자를 사용
+        //  - 단, 연산 기호가 다르다.
+        //  - 연산자
+        //      파이썬      JS          의미
+        //      A and B     A && B      둘 다 true 이면 true, 그렇지 않으면 false
+        //      A or B      A || B      둘 중 하나라도 true 이면 true, 그렇지 않으면 false
+        //      not A       !A          A 의 반대되는 논리 값
+        
+        x = 15;
+        let isRange = (x >= 10) && (x <= 20);
+        console.log(isRange);
 
+        // y 가 0 보다 큰 3 의 배수인지 검사
+        let y = -12;
+
+        console.log((y > 0) && (y % 3 == 0));
+
+        
 
     </script>
     
