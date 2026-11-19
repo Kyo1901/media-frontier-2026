@@ -5,8 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File03_Operator.html</title>
     <script>
+        // 파이썬과 다른 연산자
+
+        // 20 / 10  → 소수점까지 연산
+        // a // 10  → 정수만 연산 = 몫
+
+        console.log(10 / 2);
+        // → JS 에서도 소수점으로 연산
+        // → 소수점이 없으면 정수
+
+        console.log( parseInt(10 / 7) );
+        // → 나눈 몫을 구하려면 parseInt() 함수
+        // → Math.round() 함수
         
+        // 복합 대입 연산자
+        //  - 두 개의 연산자를 하나로 합친 형태의 연산자
+        //  - 두 개의 연산을 동시에 수행
+        //  - 산술 + 대입 or 비트 + 대입
+        let a = 10;
+        console.log("a = " + a);
+
+        // 변수의 값을 5 만큼 증가
+        a = a + 5;
+        console.log("a = " + a);
+        
+        a += 5;
+        console.log("a = " + a);
+        
+        a *= 3;
+        console.log("a = " + a);
+
+        // 100 에서 a 를 뺀 값을 a 에 저장
+        //  → 복합 대입으로 할 수 없다.
+        a = 100 - a;
+
+        // 비교 연산자
+        //  - <, >, <=, >= 로 파이썬과 동일
+        //  - ==, !=, ===, !== 로 두개 더 있다.
+        //  - JS 에서는 다른 타입의 데이터와 비교 연산이 가능
+        console.log(40 > 30);   // true
+        console.log(40 > "30"); // true
+        console.log(10 > "30"); // false
+
+        console.log(true < 2);  // true = 1
+        console.log(false < 2); // false = 0
+
+        console.log(true == 1); 
+        console.log(false == 0); 
+        
+        console.log(100 == "100");  // true
+        console.log(100 === "100");  // false → 데이터 타입이 다르면 다른 데이터다.
+
+        console.log(true == "true");
+        // → false 
+        console.log(true == "1");
+        // → true 
+
+        // JS 에서는 범위 표현을 검사하기 위한 식을
+        // 수학식처럼 작성하면 문법상 틀리진 않지만
+        // 원하는대로 연산을 하지 않는다.
+        //  → 원치 않는 결과를 받게 된다.
+        let x = 150;
+
+        // x 가 10 이상 20 이하
+        console.log(10 <= x <= 20);
+        // console.log(10 <= 150 <= 20);
+        // console.log(true <= 20);
+        // console.log(1 <= 20);
+        // console.log(true);
+
+        // 논리 연산자
+
+
     </script>
+    
 </head>
 <body>
     
