@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01</title>
+    <style>
+        .success { color: yellowgreen; }
+        .fail { color:red; }
+    </style>
+</head>
+<body>
+    <script>
+        // 웹 페이지에 요소를 추가(= 태그를 추가)
+        //  - JS 로 웹 페이지를 그릴 수 있다.
+
+        // 현재 위치에 문서 작성하기
+        document.writeln("안녕하세요.");
+
+        let i = prompt("숫자를 입력하세요.");
+
+        // i 의 값이 0 이상이면 녹색 글자로 표시     → class 속성에 success
+        // i 의 값이 0 미만이면 빨간색 글자로 표시   → class 속성에 fail 
+        let completeRes = (i >= 0 ? "success" : "fail");
+        document.writeln(`<h1 class="${completeRes}">${i}. JS로 페이지 작성</h1>`);
+        
+    </script>
+</body>
+</html>
