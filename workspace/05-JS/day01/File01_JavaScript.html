@@ -1,0 +1,32 @@
+<!-- File01_JavaScript.html -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 기본</title>
+    <!-- defer 를 추가할 경우 HTML 파일을 모두 읽은 뒤 수행 -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>JavaScript 기초</h1>
+
+    <!-- JavaScript 를 작성하기 위한 script 태그 -->
+    <script>
+        // 한줄 주석
+        /*
+            여러줄 주석
+            여러줄 주석
+            여러줄 주석
+        */
+
+        // h1 요소를 "조작"하기 위해 "탐색"하여
+        // 변수 element 에 저장
+        let element = document.querySelector("h1");
+        
+        // 브라우저 console 에 출력
+        console.log(element);
+    </script>
+</body>
+</html>
