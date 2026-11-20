@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File01_ControlStatement.html</title>
 </head>
+
 <body>
     <script>
         // 제어문
@@ -34,11 +36,11 @@
                 grade = '적음'
         */
 
-        if(views >= 10000) {
+        if (views >= 10000) {
             // if 의 조건을 만족할 때 수행되는 영역
             grade = "인기";
-        } 
-        else if(views >= 1000) {   // → else + if 을 이어서 작성
+        }
+        else if (views >= 1000) {   // → else + if 을 이어서 작성
             grade = "보통";
         }
         else {
@@ -55,10 +57,10 @@
         // 값을 통해 분기를 나누는 경우
         //  - 메뉴 선택
         //  - 이벤트 처리
-        if(choice == 1) {  }
-        else if(choice == 2) { }
-        else if(choice == 3) { }
-        else if(choice == 4 || choice == 5 || choice == 6) { }
+        if (choice == 1) { }
+        else if (choice == 2) { }
+        else if (choice == 3) { }
+        else if (choice == 4 || choice == 5 || choice == 6) { }
         else { }
 
         // 위처럼 변수 choice 에 따라 수행할 분기가 달라진다.
@@ -71,11 +73,11 @@
         //      → 시작 위치는 case 문과 값을 작성
         //      → 끝나는 지점은 break 문을 작성 = switch 문 종료
 
-        switch(choice) {
+        switch (choice) {
             case 1:     // choice 가 1 일 때 시작 위치
                 document.writeln("<div>첫 번째 메뉴를 선택하셨습니다.</div>");
                 break;
-                
+
             case 2:     // choice 가 2 일 때 시작 위치
                 document.writeln("<div>두 번째 메뉴를 선택하셨습니다.</div>");
                 break;
@@ -93,10 +95,10 @@
 
         // 이벤트 예시
         //  - 각 방향키 누르면 body 의 배경색을 설정
-        document.body.onkeydown = function(event) { 
+        document.body.onkeydown = function (event) {
             console.log(event.code); // 키보드의 물리적인 키
             console.log(event.key); // 눌려진 문자
-            switch(event.code) {
+            switch (event.code) {
                 case "ArrowDown":
                 case "PageDown":
                 case "Space":
@@ -114,7 +116,7 @@
                     break;
             }
         };
-    </script>   
+    </script>
     <hr>
     <script>
         // 반복문
@@ -131,7 +133,7 @@
         // 항목을 5개 작성
         document.writeln("<ol>");
         let i = 0;
-        while(i < 8) {
+        while (i < 8) {
             document.writeln("<li>새로운 항목</li>");
 
             // i+=1;    // i 의 값을 1 증가
@@ -149,7 +151,7 @@
 
             // i+=1;    // i 의 값을 1 증가
             i++;    // i 의 값을 1 증가
-        } while(i < 5);  // 세미콜론(;)을 작성해야한다.
+        } while (i < 5);  // 세미콜론(;)을 작성해야한다.
         document.writeln("</ol>");
         document.writeln("<hr>");
 
@@ -179,7 +181,7 @@
         // for(count = 0; count < 5; count++)  { ... }
         // document.writeln("count: " + count); → count 가 출력됨
 
-        for(let count = 0; count < 5; count++)  {
+        for (let count = 0; count < 5; count++) {
             document.writeln("<li>for 문으로 추가된 항목 - " + count + "</li>");
         }
         document.writeln("</ol>");
@@ -190,6 +192,33 @@
         //    = 해당 영역이 끝나면 바로 사라진다.
         // → 영역이 끝난 이후에서 사용하려면 구문 외부에서 선언
 
+        // for-each 문
+        //  - 배열 또는 객체를 순회하기 위한 구문
+        //  - 구문 형태
+        //      for(let val of Arr) { ... }
+        //      for(let key in Arr) { ... }
+
+        // 문자열을 순회
+        let str = "Hello World!";
+
+        document.writeln("<div>str = ");
+        for (let i = 0; i < str.length; i++) {
+            document.writeln(str[i]);
+        }
+        document.writeln("</div>");
+
+        document.writeln("<div>str = ");
+        for (let val of str) {  // str 에서 문자 하나씩 val 에 저장
+            document.writeln(val);
+        }
+        document.writeln("</div>");
+
+        document.writeln("<div>str = ");
+        for (let i in str) {    // str 에서 각 문자에 접근하기 위한 인덱스를 저장
+            document.writeln(str[i]);
+        }
+        document.writeln("</div>");
     </script>
 </body>
+
 </html>
