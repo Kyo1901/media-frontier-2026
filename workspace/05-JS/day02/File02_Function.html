@@ -44,8 +44,41 @@
         // 함수를 수행하기 위한 호출 과정은 동일
         func2("반갑습니다!");
         func2("저도 반가워요!");
-
-
     </script>    
+    <script>
+        // 익명 함수와 함수 전달 예시
+
+        // 웹 페이지를 클릭하면 알림창을 띄우기
+        function clickHandler() {
+            alert("화면을 클릭했습니다.");
+        }
+
+        // body 요소를 클릭하면 clickHandler 함수를 수행
+        document.body.onclick = clickHandler;
+
+        // 정의된 함수가 한 번만 사용하고 다른 곳에선
+        // 대입이나 호출이 되지 않는다면 익명 함수로 전달
+        document.body.onclick = function () {
+            alert("Click Event Handler Call!");
+        }
+
+        // 다른 함수의 매개변수로 전달되는 함수 = 콜백함수(callback 함수)
+
+        // 클릭하면 요소의 배경색을 'pink' 로 설정
+        function changeBackground() {
+            this.style.backgroundColor = "pink";
+        }
+        // document.body.addEventListener("click", changeBackground);
+        
+        // 인자로 함수의 코드를 전달할 때 익명 함수로 전달
+        document.body.addEventListener("click",  function () {
+            this.style.backgroundColor = "pink";
+        });
+
+
+
+
+    </script>
+
 </body>
 </html>
