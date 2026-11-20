@@ -91,6 +91,31 @@
                 break
         }
 
-    </script>    
+        // 이벤트 예시
+        //  - 각 방향키 누르면 body 의 배경색을 설정
+        document.body.onkeydown = function(event) { 
+            console.log(event.code);
+            switch(event.code) {
+                case "ArrowDown":
+                case "PageDown":
+                case "Space":
+                    this.style.backgroundColor = "white";
+                    break;
+                case "ArrowUp":
+                case "PageUp":
+                    this.style.backgroundColor = "yellowgreen";
+                    break;
+                case "ArrowLeft":
+                    this.style.backgroundColor = "paleturquoise";
+                    break;
+                case "ArrowRight":
+                    this.style.backgroundColor = "palegreen";
+                    break;
+            }
+        };
+    </script>   
+    <style>
+        p { background-color: palegreen;}
+    </style> 
 </body>
 </html>
