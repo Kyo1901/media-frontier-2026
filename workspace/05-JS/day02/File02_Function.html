@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File02_Function.html</title>
+</head>
+<body>
+    <script>
+        // 함수(function)
+        //  - 기능 단위로 분리된 코드 블록
+        //  - 미리 함수를 정의하고 필요할 때 호출하여 기능을 수행
+
+        /*
+            파이썬의 함수 정의
+            def greet(name):
+                print(f'{name}님 반갑습니다.')
+                return 0
+        */
+
+        // JS의 일반 함수 정의 
+        function greet(name, value) {
+            document.writeln(`<h3>${name}님 반갑습니다. - ${value}</h3>`);
+            return 0;
+        }
+
+        // 호출 = 함수를 사용
+        greet("Potter");
+
+        
+        // JS 는 함수를 데이터처럼 다룰 수가 있다.
+        //  - 함수 이름만 작성할 경우 함수의 코드를 변수에 저장시킬 수 있다.
+        //  - 일반 함수 뿐만 아니라 익명 함수(= 이름이 없는 함수)를
+        //    변수 또는 매개변수에 전달하는 방식으로 많이 사용된다.
+        let func = greet;
+        document.write(func);
+
+        // 함수의 코드를 변수와 같은 곳에 저장할 경우
+        // 함수의 식별자는 필요가 없기 때문에 이름 없이 함수를 작성 → 익명 함수
+        let func2 = function (message) { 
+            document.writeln("<h3>Message: " + message + "</div>");
+        }
+
+        // 함수를 수행하기 위한 호출 과정은 동일
+        func2("반갑습니다!");
+        func2("저도 반가워요!");
+
+
+    </script>    
+</body>
+</html>
