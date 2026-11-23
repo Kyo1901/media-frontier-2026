@@ -136,7 +136,29 @@ console.log("[4]", firstUrl, lastUrl, pageCount)
 //
 //  출력 형식:  [5] ? ?
 
-// ← 여기
+let page = 1;       // 페이지 번호
+let processed = 0;  // 처리 횟수
+
+// 무한 루프
+while(true) {
+    // 입력 -> 해당 문제는 입력 과정이 없기 때문에 패스
+
+    // 유효성 검사 
+    if(page > 20) {
+        break;  // 반복문을 종료
+    }
+    if(page % 5 === 0) {
+        page++;     // 다음 페이지로 넘어가기 위해 1 증가
+        continue;   // 다음 반복으로 이동
+    }
+
+    // 데이터 처리
+    processed++; // 처리 과정 횟수를 1 증가
+    page++;
+
+    // 출력 = 패스
+}
+console.log("[5]", processed, page);
 
 
 // ── [6] 반복문 안에서 함수 부르기 — 등급별 개수 ─────────────
@@ -159,8 +181,13 @@ console.log("[4]", firstUrl, lastUrl, pageCount)
 //  🔴 파이썬이면 TypeError 로 멈춥니다. JS 는 어떻게 됩니까?
 //  출력 형식:  [7] ? ?
 
-// ← 여기
-
+// [섹션] 제목
+const card1 = (section, title) => `[${section}] ${title}`;
+const card2 = (section, title = "제목 없음") => `[${section}] ${title}`;
+// → 매개변수에 기본 인자를 저장하여, 
+//   인자가 없는 경우 기본 값을 사용하도록 할 수 있다.
+console.log("[7]", card1("정치"));  // [정치] undefined
+console.log("[7]", card2("정치"));  // [정치] 제목 없음
 
 // ── [8] 콜백 — 함수를 «넘긴다» ─────────────────────────────
 //  · function 으로 반복(n, 할일) 을 만드세요.
