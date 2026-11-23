@@ -39,7 +39,7 @@
         }
         document.writeln("</div>");
 
-        // for-of 문
+        // for-of 문    
         //  - 배열의 원소를 처음부터 끝까지 순회
         document.writeln("<div>array = ");
         for(let n of array) {
@@ -47,6 +47,35 @@
         }
         document.writeln("</div>");
     </script>    
-    
+
+    <script>
+        // JS 의 배열을 다룰 때 주의할 점
+
+        // 인덱스 범위를 항상 검사하여 다뤄야한다.
+        let numbers = [10, 20, 30];
+
+        // 배열의 원소와 개수를 출력
+        document.writeln("numbers = " + numbers + "<br>");
+        document.writeln("length = " + numbers.length + "<br>");
+        
+        // 잘못된 인덱스를 지정한 경우
+        //  - 오류가 발생하지 않고 정상 처리가 된다.
+        //  - 인덱스에 대응하는 값이 없으면 undefined 를 반환
+        //    대응하는 값이 없으면 해당 인덱스까지 빈 원소를 추가
+        document.writeln("numbers[50] = " + numbers[50] + "<br>");
+        numbers[100] = 1000;    // 문법상 문제가 되지 않는다.
+        document.writeln("numbers = " + numbers + "<br>");
+        document.writeln("length = " + numbers.length + "<br>");
+        
+        // 안전하게 데이터를 추가하는 방법
+        numbers = [10, 20, 30];
+        numbers.push(40);   // 마지막 원소로 40 을 추가
+
+        document.writeln("numbers = " + numbers + "<br>");
+        document.writeln("length = " + numbers.length + "<br>");
+
+
+    </script>
+
 </body>
 </html>
