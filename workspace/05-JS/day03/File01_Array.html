@@ -83,11 +83,29 @@
         const sections = ["정치", "사회", "경제"];
         // 배열 = 집(주소), 원소 = 가구
         // → 집 주소를 바꾸지 못할 뿐 가구는 언제든 넣고 뺄 수 있다.
-        
+
         sections.push("문화");
         document.writeln("sections = " + sections + "<br>");
         document.writeln("length = " + sections.length + "<br>");
+        document.writeln("<hr>");   // 구분선
 
+        // 기존 섹션의 복사본
+        //  - 대입 연산자로 대입할 경우 동일한 배열을 참조
+        //      = 동일한 집 주소를 가지게 되므로 같은 집에 방문한다.
+        // const sectionsCopy = sections;   // 동일한 배열을 사용
+        const sectionsCopy = [...sections]; // sections 의 복사본을 생성
+        
+        // 복사본에 "스포츠" 섹션을 추가
+        sectionsCopy.push("스포츠");
+        
+        // 원본을 출력
+        document.writeln("sections = " + sections + "<br>");
+        document.writeln("length = " + sections.length + "<br>");
+        // 복사본을 출력
+        document.writeln("copy = " + sectionsCopy + "<br>");
+        document.writeln("length = " + sectionsCopy.length + "<br>");
+
+        
 
     </script>
 
