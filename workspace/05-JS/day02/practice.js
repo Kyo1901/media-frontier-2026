@@ -23,8 +23,18 @@
 //
 //  🔴 조건의 «순서»가 중요합니다. [6] 에서 다시 씁니다.
 
-// ← 여기
-
+function grade(views) {
+    if(views >= 10000) {
+        return "인기";
+    }
+    else if(views >= 1000) {
+        return "보통";
+    }
+    else {
+        return "적음";
+    }
+}
+console.log("[1]", grade(16311), grade(3562), grade(431));
 
 // ── [2] 화살표 함수 + 삼항 — 없는 값을 화면 글자로 ─────────
 //  «화살표 함수»로 show(views) 를 만드세요.
@@ -33,8 +43,16 @@
 //
 //  🔴 중괄호 없이 한 줄로 쓰세요 — return 이 저절로 붙습니다.
 //  출력 형식:  [2] ? ?        ← show(3562) · show(null)
+// 조건 연산자(삼항 연산자)
+//  조건? 참인 경우의 표현식 : 거짓인 경우의 표현식
+/*
+function show(views) {
+    return views === null ? "-" : views.toLocaleString();
+}
+*/
+const show = (views) => views === null ? "-" : views.toLocaleString();
 
-// ← 여기
+console.log("[2]", show(3552), show(null))
 
 
 // ── [3] 🔴 오늘의 함정 — 0 과 null ─────────────────────────
@@ -49,8 +67,13 @@
 //  🔴 찍기 «전»에 넷을 종이에 적으세요. 하나는 틀립니다.
 //  출력 형식:  [3] ? ? ? ?
 
-// ← 여기
+// JS 에서 조건식에 들어가는 데이터들은 논리 값으로 치환
+//  → 거짓: false, 0, null, undefined, NaN, "", [], {}
+const wrongCheck = (views) => views ? "있음" : "없음";
+const rightCheck = (views) => views === null ? "없음" : "있음";
 
+console.log("[3]", wrongCheck(0), wrongCheck(null), rightCheck(0), rightCheck(null));
+//                  없음            없음                있음            없음
 
 // ── [4] 반복문 + 화살표 함수 — 25쪽 주소 ───────────────────
 //  · 화살표 함수 pageUrl(i) 를 만드세요
@@ -61,7 +84,45 @@
 //  출력 형식:  [4] ? ? ?      ← 마지막은 «세어 본» 개수입니다
 //  🔴 크롤링 3일차에 파이썬으로 돌던 그 25쪽입니다.
 
-// ← 여기
+/*
+
+1. 일반 함수 정의
+function pageUrl(i) {
+    return i === 1 ? "index.html" : `page-${i}.html`;
+}
+
+2. 함수 식별자를 변수로 만들어 익명 함수로 정의 
+const pageUrl = function (i) {
+    return i === 1 ? "index.html" : `page-${i}.html`;
+}
+
+3. function 키워드 대신 => 로 화살표 함수로 정의
+const pageUrl = (i) => {
+    return i === 1 ? "index.html" : `page-${i}.html`;
+}
+*/
+
+// 명령어가 return 한 줄인 경우 중괄호 return 키워드 생략
+const pageUrl = (i) => i === 1 ? "index.html" : `page-${i}.html`;
+
+let firstUrl = "";
+let lastUrl = "";
+let pageCount = 0;
+for (let p = 1; p <= 25; p++) {
+    const url = pageUrl(p); // i 번째 페이지 주소 반환
+    if(p === 1) { 
+        firstUrl = url;
+    }
+    
+    // 전체 페이지 수가 한 페이지인 경우에는
+    // 첫 번째 페이지가 마지막 페이지이기도 하기 때문에
+    // else 문으로 작성하지 않는다.
+    //  → 첫 번째 페이지 주소부터 마지막 페이지 주소까지 순차적으로 저장
+    lastUrl = url;
+    pageCount++;
+}
+console.log("[4]", firstUrl, lastUrl, pageCount)
+
 
 
 // ── [5] while + break + continue ──────────────────────────
