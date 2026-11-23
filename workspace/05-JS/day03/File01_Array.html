@@ -26,8 +26,27 @@
         
         // 마지막 원소는 (원소의 개수 - 1)로 접근
         document.writeln(`<div>array[array.length - 1] = ${array[array.length - 1]}</div>`);
-        
 
+        array = [15, 37, 28, 12, 89];
+
+        // for 문
+        //  - 원소의 개수만큼 반복
+        //  - 인덱스 범위만큼 반복
+        //      = 인덱스 범위: 0 <= index < length        
+        document.writeln("<div>array = ");
+        for(let i = 0; i < array.length; i++) {
+            document.write(array[i] + " ");
+        }
+        document.writeln("</div>");
+
+        // for-of 문
+        //  - 배열의 원소를 처음부터 끝까지 순회
+        document.writeln("<div>array = ");
+        for(let n of array) {
+            document.write(n + " ");
+        }
+        document.writeln("</div>");
     </script>    
+    
 </body>
 </html>
