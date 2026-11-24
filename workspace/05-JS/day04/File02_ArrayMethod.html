@@ -113,8 +113,20 @@
         // 0    : 동일한 값
         // 양수 : a 가 더 작은 값 → 오른쪽에 배치
         write("sorted: " + nums);
+    </script>
+    <hr>
+    <script>
+        // reduce 메서드
+        //  - 합계를 구하기 위한 메서드
 
-        
+        viewTotal = 0;
+        rows.forEach((r) => viewTotal += r.views);
+
+        // acc = 현재까지 쌓인 값
+        // r = 이번에 사용할 요소
+        viewTotal= rows.reduce((acc, r) => acc + r.views, 0);        
+
+        write("전체 조회수: " + viewTotal);
     </script>
 </body>
 </html>
