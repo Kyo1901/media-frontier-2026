@@ -102,7 +102,25 @@
 
             write(str);
         }
+    </script>
+    <hr>
+    <script>
+        // 구조 분해 할당
 
+        // 기사의 제목과 조회수
+        //  - 기존 방식
+        const t = rows[0].title;
+        const v = rows[0].views;
+
+        //  - 구조 분해 할당
+        const { title, views } = rows[0];
+        write("제목: " + title + ", 조회수: "  + views);
+
+        // 키가 없는 경우 undefined 로 반환
+        //  = 배열에 인덱스를 잘못 지정한 것처럼 undefined 로 처리
+        //  → 변수에 기본 값을 지정할 수 있다.
+        const { section, comments = 0 } = rows[0];
+        write("섹션: " + section + ", 댓글수: " + comments);
 
     </script>
 </body>
