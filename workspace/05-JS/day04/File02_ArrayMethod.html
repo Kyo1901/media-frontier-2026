@@ -128,5 +128,24 @@
 
         write("전체 조회수: " + viewTotal);
     </script>
+    <hr>
+    <script>
+        // map, filter => 새 배열로 생성
+        // sort => 정렬된 기존 배열을 반환
+
+        // 앞서 배웠던 메서드들을 연속으로 이어쓰는 것이 가능하다.
+        //  = 메서드 체이닝
+        //     : 반환되는 객체의 속성 또는 메서드를 이어서 작성
+
+        // 섹션이 '문화'인 기사의 총 조회수
+        let cultures = rows.filter((r) => r.section == "문화");
+        viewTotal = cultures.reduce((acc, r) => acc + r, 0);
+
+        
+        viewTotal = rows
+                    .filter((r) => r.section == "문화")
+                    .reduce((acc, r) => acc + r, 0);
+
+    </script>
 </body>
 </html>
