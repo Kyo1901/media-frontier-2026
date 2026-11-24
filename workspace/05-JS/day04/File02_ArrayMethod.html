@@ -12,25 +12,17 @@
 </head>
 <body>
     <script>
-        const rows = [  // 객체들을 저장할 배열
-            {   // 첫 번째 기사를 저장할 객체
-                title: "여야 예산안 놓고 공방",
-                section: "정치",
-                reporter: "조채원",
-                views: 3562
-            },    
-            {   // 두 번째 기사를 저장할 객체
-                title: "반도체 정책 발표에 업계 촉각",
-                section: "경제",
-                reporter: "장지민",
-                views: 5159
-            },    
-            {   // 세 번째 기사를 저장할 객체
-                title: "미술관 전시 개막",
-                section: "문화",
-                reporter: "강도현",
-                views: 12217
-            }
+        const rows = [
+            { title: "여야 예산안 놓고 공방", section: "정치", reporter: "조채원", views: 3562 },
+            { title: "반도체 정책 발표에 업계 촉각", section: "경제", reporter: "장지민", views: 5159 },
+            { title: "미술관 전시 개막", section: "문화", reporter: "강도현", views: 12217 },
+            { title: "수도권 조사 결과 공개", section: "사회", reporter: "조도현", views: 7720 },
+            { title: "국내 기업 서비스 개편", section: "IT", reporter: "권민준", views: 9739 },
+            { title: "국가대표 감독 교체", section: "스포츠", reporter: "오수빈", views: 10873 },
+            { title: "K리그 결승 진출", section: "스포츠", reporter: "김예은", views: 847 },
+            { title: "의료 관련 신고 급증", section: "사회", reporter: "김예은", views: 1109 },
+            { title: "주거 제도 개선 요구", section: "사회", reporter: "조채원", views: 9859 },
+            { title: "국가대표 결승 진출", section: "스포츠", reporter: "장태윤", views: null },
         ];
 
         // 모든 기사들의 제목들을 저장
@@ -44,14 +36,85 @@
         // map 메서드
         //  - 배열의 각 요소마다 함수(콜백함수)를 실행
         //  - 반환 값들을 모아서 배열을 만든다.
+        /*
+        map 함수의 기본 형태
+
         const titleMap = [];
         rows.map(function(r) { 
             // 매개변수 r = 첫 번째 기사부터 마지막 기사까지 하나씩 전달
             titleMap.push(r.title);
         });
+        */
+
+        /*
+        map 의 반환 값은 콜백 함수들의 반환 값의 배열
+        const titleMap = rows.map(function(r) { return r.title });
+        */
+        
+        // 익명 함수를 화살표 함수로 바꾸면 간결한 표현식으로 배열 생성
+        const titleMap = rows.map((r) => r.title);
+
         write(titleMap);
+    </script>
+    <hr>
+    <script>
+        // forEach 메서드
+        //  - 배열의 각 요소마다 콜백함수를 수행
+        //  - 반환 값 없이 콜백 함수만 수행
+        //  → 배열의 각 요소를 부가적으로 활용하기 위해 사용
+        rows.forEach((r) => write(r.title + ", " + r.section));
+        
+        let viewTotal = 0;
+        rows.forEach((r) => viewTotal += r.views);
+        write("총 조회수: " + viewTotal);
+    </script>
+    <hr>
+    <script>
+        // filter 메서드 
+        //  - 배열의 각 요소마다 콜백 함수를 수행
+        //  - 지정된 조건에 맞는 요소를 배열로 생성
 
+        // 섹션이 "사회"인 기사들을 배열로 생성
+        //  = 사회인 기사들이 저장된 객체 배열
+        const society = rows.filter((r) => r.section == "사회");
+        society.forEach((r) => write(r.title + " / " + r.section));
 
+        // 조회수가 7000 이상인 기사들의 제목, 섹션, 조회수 출력
+        const populars = rows.filter((r) => r.views >= 7000);
+        populars.forEach((r) => write(r.title + "/" + r.section + "/" + r.views));
+    </script>
+    <hr>
+    <script>
+        // sort 메서드
+        //  - 배열의 각 요소들을 정렬
+        //  - 콜백함수를 통해 우리가 원하는 형식으로 정렬
+        const nums = [10873, 9859, 847, 12217];
+
+        nums.sort();
+        // → 내부에서 숫자 데이터를 문자열 데이터로 치환
+        // → 문자열은 사전순으로 정렬
+
+        write("sorted: " + nums);
+        
+        nums.sort((a, b) => a - b);
+        write("sorted: " + nums);
+        
+        // 정렬 할 때 두 개의 데이터를 비교
+        //  a : 첫 번째 데이터
+        //  b : 두 번째 데이터
+        //  → 반환 값에 따라 정렬 방향이 달라진다.
+        //      음수 : a 가 더 작은 값 → 왼쪽에 배치
+        //      0    : 동일한 값
+        //      양수 : a 가 더 큰 값   → 오른쪽에 배치
+        
+        // 내림차순
+        nums.sort((a, b) => b - a);
+        // 음수 : a 가 더 큰 값 → 왼쪽에 배치
+        // 0    : 동일한 값
+        // 양수 : a 가 더 작은 값 → 오른쪽에 배치
+        write("sorted: " + nums);
+
+        
     </script>
 </body>
 </html>
