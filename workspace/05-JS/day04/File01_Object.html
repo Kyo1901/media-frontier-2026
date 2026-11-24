@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File01_Object.html</title>
+    <script>
+        function write(innerHTML, tag="div") {
+            document.writeln(`<${tag}>${innerHTML}</${tag}>`);
+        }
+    </script>
+</head>
+<body>
+    <script>
+        // 객체
+        //  - 다수의 데이터와 함수를 키와 대응되도록 저장하는 자료구조
+
+        // 하나의 기사에 포함된 데이터
+        //  - 제목
+        //  - 섹션
+        //  - 기자
+        //  - 조회수
+        
+        // 기사 객체
+        //  → 크롤링에서 읽어온 한 행 데이터
+        //  → DB 에서 읽어온 한 행 데이터
+        const report = {
+            title: "여야 예산안 놓고 공방",
+            section: "정치",
+            reporter: "조채원",
+            views: 3562
+        };
+
+        console.log(report.title);      // 속성 접근 연산자 + 식별자 형태의 키
+        console.log(report["section"]); // 인덱스 연산자 + 문자열 형태의 키
+
+        // 다수의 기사 데이터를 다루려면
+        // 객체 배열 = 다수의 객체를 하나의 묶음으로 묶은 형태
+
+        const rows = [  // 객체들을 저장할 배열
+            {   // 첫 번째 기사를 저장할 객체
+                title: "여야 예산안 놓고 공방",
+                section: "정치",
+                reporter: "조채원",
+                views: 3562
+            },    
+            {   // 두 번째 기사를 저장할 객체
+                title: "반도체 정책 발표에 업계 촉각",
+                section: "경제",
+                reporter: "장지민",
+                views: 5159
+            },    
+            {   // 세 번째 기사를 저장할 객체
+                title: "미술관 전시 개막",
+                section: "문화",
+                reporter: "강도현",
+                views: 12217
+            }
+        ];
+
+        // 첫 번째 기사의 제목
+        //  - 객체 배열이기 때문에
+        //     1. 인덱스를 통해 N 번째 기사에 접근
+        //     2. 키를 통해 기사의 제목에 접근
+        write("첫 번째 기사 제목: " + rows[0].title);
+        
+        // 세 번째 기사의 조회수
+            
+
+    </script>
+</body>
+</html>
