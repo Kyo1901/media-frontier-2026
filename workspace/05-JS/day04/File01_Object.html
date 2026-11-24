@@ -86,10 +86,24 @@
             // 변수 r 에는 하나의 기사 객체가 저장되어있다.
             viewTotal += r.views;
         }
+        write("전체 조회수: " + viewTotal);
 
         // for-in → 객체 순회하기에 적합 = 배열의 인덱스 또는 객체의 키를 하나씩 반환하여 순회
-        write("전체 조회수: " + viewTotal);
         
+        // 모든 기사의 데이터 출력
+        for(let r of rows) {
+            // 변수 r = 기사 데이터를 가진 객체
+            let str = "";
+
+            for(let k in r) {
+                // 변수 k = 기사가 가진 데이터의 키
+                str += r[k] + " / ";
+            }
+
+            write(str);
+        }
+
+
     </script>
 </body>
 </html>
