@@ -121,6 +121,28 @@
         //  → 변수에 기본 값을 지정할 수 있다.
         const { section, comments = 0 } = rows[0];
         write("섹션: " + section + ", 댓글수: " + comments);
+    </script>
+
+    <script>
+        // 새로운 키 추가 및 전개
+        const sections = ["정치", "경제"];
+        const newSections = ["사회", "문화"];
+
+        // 합친 섹션
+        //  → 전개를 활용하여 두 배열을 합친 새로운 배열을 만들 수 있다.
+        const copy = [...sections];     // 복사본
+        const append = [...sections, ...newSections];  // 합친 배열
+        //  = ["정치", "경제", "사회", "문화"];
+
+        // 전개를 통해 객체를 복사 및 수정이 가능
+        //  - 전개만 할 경우 복사
+        //  - 기존 키에 새로운 값을 지정할 경우 새로운 값으로 수정
+        //  - 새 키인 경우 속성이 추가
+        //  → React 에서 자주 사용되는 방식
+        const modifed = { ...rows[0], views: 9999, comments:0 };
+        console.table(modifed);
+        
+
 
     </script>
 </body>
