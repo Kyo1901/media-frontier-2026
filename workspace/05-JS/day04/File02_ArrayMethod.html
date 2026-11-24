@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File02_ArrayMethod.html</title>
+    <script>
+        function write(innerHTML, tag="div") {
+            document.writeln(`<${tag}>${innerHTML}</${tag}>`);
+        }
+    </script>
+</head>
+<body>
+    <script>
+        const rows = [  // 객체들을 저장할 배열
+            {   // 첫 번째 기사를 저장할 객체
+                title: "여야 예산안 놓고 공방",
+                section: "정치",
+                reporter: "조채원",
+                views: 3562
+            },    
+            {   // 두 번째 기사를 저장할 객체
+                title: "반도체 정책 발표에 업계 촉각",
+                section: "경제",
+                reporter: "장지민",
+                views: 5159
+            },    
+            {   // 세 번째 기사를 저장할 객체
+                title: "미술관 전시 개막",
+                section: "문화",
+                reporter: "강도현",
+                views: 12217
+            }
+        ];
+
+        // 모든 기사들의 제목들을 저장
+        //  → 제목들을 저장할 배열이 필요
+        const titles = [];
+        for(let r of rows) {
+            titles.push(r.title);
+        }
+        write(titles);
+
+        // map 메서드
+        //  - 배열의 각 요소마다 함수(콜백함수)를 실행
+        //  - 반환 값들을 모아서 배열을 만든다.
+        const titleMap = [];
+        rows.map(function(r) { 
+            // 매개변수 r = 첫 번째 기사부터 마지막 기사까지 하나씩 전달
+            titleMap.push(r.title);
+        });
+        write(titleMap);
+
+
+    </script>
+</body>
+</html>
