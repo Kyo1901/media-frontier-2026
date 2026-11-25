@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File01_DOM.html</title>
+</head>
+<body>
+    <ul id="list">
+        <li>
+            <a href="">여야 예산안 놓고 공방</a>
+        </li>
+        <li>
+            <a href="">반도체 정책 발표에 업계 촉각</a>
+        </li>
+    </ul>
+
+    <script>
+        // JS 내에서 HTML 요소 탐색
+        //  → 브라우저가 HTML 문서를 읽고 DOM 에 요소를 만들어야 탐색 및 조작이 가능  
+        //  → 요소 탐색 메서드
+        //      document.querySelector(선택자)      → 선택자에 해당하는 첫 번째 요소
+        //      document.querySelectorAll(선택자)   → 선택자에 해당하는 요소들
+        //      document.getElementById(ID속성)     → id 속성 값이 일치하는 요소
+
+        const ul = document.querySelector("#list");
+
+        console.table(ul);
+        console.table(ul.children); // ul 요소의 자식 요소들
+        console.table(ul.children.length); // ul 요소의 자식 요소의 수
+        console.log(ul.firstElementChild.nextElementSibling);
+        // = ul 의 첫 번째 자식 요소의 다음 형제 요소
+        // = 두 번째 카드
+
+    </script>    
+</body>
+</html>
