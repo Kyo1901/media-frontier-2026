@@ -47,7 +47,7 @@ const 빠뜨림 = rows.map((r) => { r.title; });
 // → return 키워드를 작성하려면 중괄호가 필요하며, 중괄호가 있으면 reutrn 키워드가 생략되지 않음.
 // → 반환 값이 없는 함수는 undefined 를 반환하기 때문에 
 //   배열에는 undefined 가 10개 저장된다.
-console.log("[1]", 빠뜨림.length, 빠뜨림[0]);
+console.log("[2]", 빠뜨림.length, 빠뜨림[0]);
 
 // ── [3] filter — 골라냅니다 ────────────────────────────────
 //    · section 이 "사회" 인 것
@@ -59,8 +59,13 @@ console.log("[1]", 빠뜨림.length, 빠뜨림[0]);
 //  🔴 조회수가 null 인 기사는 어느 쪽에 들어갈까요?
 //  출력 형식:  [3] ? ? ?
 
-// ← 여기
+const society = rows.filter((r) => r.section === "사회");
+const popular = rows.filter((r) => r.views >= 10000);
+// 화살표 함수의 반환 값이 true 인 요소만 배열에 저장된다.
+// → 화살표 함수에는 true 가 나오도록 조건을 작성
 
+const popularTitleStr =  popular.map((r) => r.title).join(" / ");
+console.log("[3]", society.length, popular.length, popularTitleStr);
 
 // ── [4] find · some · every ────────────────────────────────
 //    · 첫 번째 "스포츠" 기사의 제목
@@ -73,7 +78,18 @@ console.log("[1]", 빠뜨림.length, 빠뜨림[0]);
 //  🔴 마지막이 false 라면 «어느 기사» 때문입니까? 847 이 아닙니다.
 //  출력 형식:  [4] ? ? ? ?
 
-// ← 여기
+const firstSport = rows.find((r) => r.section === "스포츠");
+const firstInternational = rows.find((r) => r.section === "국제");
+// 조건에 맞는 기사가 없기 때문에 undefined 가 반환
+
+const some = rows.some((r) => r.views >= 12000);
+// 기사들 중 조건에 맞는 기사가 "하나라도" 있는지 검사
+
+const every = rows.every((r) => r.views >= 500);
+// 기사들이 조건에 "모두 맞는지" 검사
+//  → 기사들 중 조회수가 null 인 것이 있기 때문에 false 가 반환
+
+console.log("[4]", firstSport.title, firstInternational, some, every);
 
 
 // ── [5] 🔴 오늘의 함정 — sort ──────────────────────────────
@@ -87,7 +103,20 @@ console.log("[1]", 빠뜨림.length, 빠뜨림[0]);
 //  🔴 첫 번째 결과를 보고 «왜 저렇게 되는지» 생각해 보세요. 숫자인데 말입니다.
 //  출력 형식:  [5] ? | ?
 
-// ← 여기
+const nums = [10873, 9859, 847, 12217];
+
+// nums.sort(); 
+// → 숫자 데이터가 저장된 배열이여도
+//   요소를 문자열로 처리하여 사전순으로 비교
+// → 원본 배열을 정렬하기 때문에 원본의 순서가 날라간다.
+
+// 배열을 복사 한 뒤 정렬
+// const sorted = [...nums].sort(); 
+
+// 숫자 내림차순을 위해 화살표 함수를 추가
+const sorted = [...nums].sort((a, b) => b - a); 
+
+console.log("[5]", nums.join(", "), "|", sorted.join(", "));
 
 
 // ── [6] 🔴 sort 는 원본을 바꿉니다 ─────────────────────────
