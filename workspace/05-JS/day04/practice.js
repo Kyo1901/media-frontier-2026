@@ -150,4 +150,23 @@ console.log("[5]", nums.join(", "), "|", sorted.join(", "));
 //  네 값을 한 줄에 찍으세요.
 //  출력 형식:  [7] ? ? ? ?
 
-// ← 여기
+const notNull = rows.filter((r) => r.views !== null);
+// 조회수가 null 이 아닌 기사들의 집합
+
+const viewTotal = notNull.reduce((acc, r) => acc + r.views, 0)
+// acc = acc + r.views 와 같이 동작
+
+const invaildAvg = viewTotal / rows.length;   // 10 으로 나눈다. -> 잘못된 경우
+const vaildAvg = viewTotal / notNull.length;  // 9 로 나눈다. (rows.length - null의 개수)
+
+// 조회수가 가장 높은 기사
+//  1. 조회수가 null 이 아닌 기사들을 추출   → filter(...) = 새 배열로 추출
+//  2. 조회수 기준으로 내림차순으로 정렬     → sort(...)  
+//  3. 정렬된 배열에서 첫 번째 기사를 추출   → ...[0]
+
+const maxViewReport = rows
+  .filter((r) => r.views !== null)       // → 조회수가 null 이 아닌 기사들만 추출
+  .sort((a, b) => b.views - a.views)[0]  // → 조회수 기준으로 내림차순 정렬 + 첫 번째 기사 추출
+
+console.log("[7]", viewTotal, invaildAvg, vaildAvg, maxViewReport.title);
+
