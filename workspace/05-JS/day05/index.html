@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>실습 ⑤ — DOM</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- 🔴 defer 를 빼고 새로고침해 보세요. 1일차에 예고한 그 장면입니다. -->
+  <script src="practice.js" defer></script>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header class="site-header">뉴스</header>
+
+    <form class="search" action="#">
+      <label for="q">검색</label>
+      <input type="text" id="q" name="q">
+      <button type="submit" class="btn">찾기</button>
+    </form>
+
+    <main class="content">
+
+      <h1 id="title">경제</h1>
+
+      <p id="count">카드를 세어 보세요</p>
+
+      <ul id="list">
+        <li class="card">
+          <span class="badge">경제</span>
+          <a href="#">환율 정책 발표에 업계 촉각</a>
+          <dl>
+            <dt>기자</dt>
+            <dd>이지민</dd>
+            <dt>조회</dt>
+            <dd class="views">1,039</dd>
+          </dl>
+        </li>
+        <li class="card">
+          <span class="badge">경제</span>
+          <a href="#">고용 수출 22% 증가</a>
+          <dl>
+            <dt>기자</dt>
+            <dd>장지민</dd>
+            <dt>조회</dt>
+            <dd class="views">7,138</dd>
+          </dl>
+        </li>
+        <li class="card">
+          <span class="badge">경제</span>
+          <a href="#">금리 지수 31% 변동</a>
+          <dl>
+            <dt>기자</dt>
+            <dd>박서준</dd>
+            <dt>조회</dt>
+            <dd class="views">3,748</dd>
+          </dl>
+        </li>
+      </ul>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
