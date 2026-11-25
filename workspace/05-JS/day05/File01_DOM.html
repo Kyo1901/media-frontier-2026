@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <ul id="list">
+    <ul id="title-list">
         <li>
             <a href="">여야 예산안 놓고 공방</a>
         </li>
@@ -32,7 +32,7 @@
         //      document.querySelectorAll(선택자)   → 선택자에 해당하는 요소들
         //      document.getElementById(ID속성)     → id 속성 값이 일치하는 요소
 
-        const ul = document.querySelector("#list");
+        const ul = document.querySelector("#title-list");
 
         console.table(ul);
         console.table(ul.children); // ul 요소의 자식 요소들
@@ -158,7 +158,106 @@
         card.classList.toggle("hot");    // 클래스 hot 을 추가 및 제거
         // → 지정된 클래스가 있으면 제거
         //   지정된 클래스가 없으면 추가
+    </script>
+
+    <script>
+        const rows = [
+            { title: "여야 예산안 놓고 공방", section: "정치", reporter: "조채원", views: 3562 },
+            { title: "반도체 정책 발표에 업계 촉각", section: "경제", reporter: "장지민", views: 5159 },
+            { title: "미술관 전시 개막", section: "문화", reporter: "강도현", views: 12217 },
+            { title: "수도권 조사 결과 공개", section: "사회", reporter: "조도현", views: 7720 },
+            { title: "국내 기업 서비스 개편", section: "IT", reporter: "권민준", views: 9739 },
+            { title: "국가대표 감독 교체", section: "스포츠", reporter: "오수빈", views: 10873 },
+            { title: "K리그 결승 진출", section: "스포츠", reporter: "김예은", views: 847 },
+            { title: "의료 관련 신고 급증", section: "사회", reporter: "김예은", views: 1109 },
+            { title: "주거 제도 개선 요구", section: "사회", reporter: "조채원", views: 9859 },
+            { title: "국가대표 결승 진출", section: "스포츠", reporter: "장태윤", views: null },
+        ];
+
+        // 새로운 뉴스 카드를 추가
+
+        // 1. ul#list 요소에 .card 를 추가
+        // 2. li 요소를 생성
+        // 3. 생성된 li 요소에 클래스 card 를 추가
+        // 4. 그 외 하위 요소 추가 및 속성 설정.
+        // 5. #list 요소에 .card 요소를 추가
         
+        const cardList =  document.querySelector("ul#list");
+
+        const li = document.createElement("li");
+        li.classList.add("card");
+        li.innerText = "새 카드";
+        cardList.appendChild(li);
+
+        
+        // const section, title = { title: "여야 예산안 놓고 공방", section: "정치", reporter: "조채원", views: 3562 };
+        // function makeCard(section, title) { ... }
+        // makeCard(rows[0].section, rows[0].title);
+        
+        // 카드 하나(li)만드는 함수
+        //  - 구조 분해(03일차)를 통해 뉴스 정보를 한 번에 전달하고 원하는 것만 받기
+        // const {section, title} = { title: "여야 예산안 놓고 공방", section: "정치", reporter: "조채원", views: 3562 };
+        function makeCard({section, title}) {
+            const li = document.createElement("li");
+            li.classList.add("card");
+            
+            const badge = document.createElement("span");
+            badge.classList.add("badge");
+            badge.innerText = section;
+
+            const a = document.createElement("a");
+            a.innerText = title;
+
+            // li.appendChild(badge);
+            // li.appendChild(a);
+            li.append(badge, a);
+
+            // card 를 반환
+            return li;
+        }
+
+        function makeCard2({section, title}) {
+            const li = document.createElement("li");
+            li.classList.add("card");
+
+            // li 의 내부 문자를 HTML 형식으로 작성
+            li.innerHTML = `
+                <span class="badge">${section}</span>
+                <a href="#">${title}</a>
+            `;
+
+            return li;
+        }
+        
+        // cardList.append( makeCard(rows[0]) );
+
+        // 객체 배열 rows 에 있는 모든 기사를 추가
+        
+        // rows.map(function (r) { return makeCard(r); })
+        // rows.map((r) => makeCard(r))
+        //  → 화살표 함수가 수행하는 로직이 makeCard 와 동일
+        const cards = rows.map(makeCard2);
+        cardList.append(...cards);
+        
+        // rows 는 화면에 표시할 뉴스 전체 기사
+        //  - 새로운 기사가 추가되거나 기존 기사가 삭제된 경우
+        //    다시 화면에 표시
+        //  - 기존 화면에 보여지는 기사들을 지우고 다시 표시
+        function displayNewsCard(rows) {
+            cardList.innerText = "";
+            cardList.append(...rows.map(makeCard2));
+        }
+
+        // 전체 기사 표시
+        displayNewsCard(rows);  
+
+        // 조회수 5000 이상인 기사만 표시
+        displayNewsCard(rows.filter((r) => r.views >= 5000));
+
+        // 정치 섹션
+        displayNewsCard(rows.filter((r) => r.section === "정치"));
+
+
     </script>
 </body>
 
