@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>실습 ⑥ — 이벤트</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="practice.js" defer></script>
+</head>
+<body>
+
+<div class="page">
+
+<header class="site-header">뉴스</header>
+
+<!-- 🔴 어제까지 아무 일도 안 하던 그 검색창입니다. 오늘 동작시킵니다. -->
+<form class="search" id="searchForm" action="#">
+  <label for="q">검색</label>
+  <input type="text" id="q" name="q" placeholder="제목으로 찾기">
+  <button type="submit" class="btn">찾기</button>
+  <button type="button" class="btn" id="reset">전체</button>
+</form>
+
+<main class="content">
+
+  <h1 id="title">전체</h1>
+
+  <p id="count">6건</p>
+
+  <ul id="list">
+    <li class="card" data-section="정치">
+      <span class="badge">정치</span>
+      <a href="#">여야 예산안 놓고 공방</a>
+      <dl>
+        <dt>기자</dt><dd>조채원</dd>
+        <dt>조회</dt><dd class="views">3,562</dd>
+      </dl>
+    </li>
+    <li class="card" data-section="경제">
+      <span class="badge">경제</span>
+      <a href="#">반도체 정책 발표에 업계 촉각</a>
+      <dl>
+        <dt>기자</dt><dd>장지민</dd>
+        <dt>조회</dt><dd class="views">5,159</dd>
+      </dl>
+    </li>
+    <li class="card" data-section="문화">
+      <span class="badge">문화</span>
+      <a href="#">미술관 전시 개막</a>
+      <dl>
+        <dt>기자</dt><dd>강도현</dd>
+        <dt>조회</dt><dd class="views">12,217</dd>
+      </dl>
+    </li>
+    <li class="card" data-section="사회">
+      <span class="badge">사회</span>
+      <a href="#">수도권 조사 결과 공개</a>
+      <dl>
+        <dt>기자</dt><dd>조도현</dd>
+        <dt>조회</dt><dd class="views">7,720</dd>
+      </dl>
+    </li>
+    <li class="card" data-section="스포츠">
+      <span class="badge">스포츠</span>
+      <a href="#">국가대표 감독 교체</a>
+      <dl>
+        <dt>기자</dt><dd>오수빈</dd>
+        <dt>조회</dt><dd class="views">10,873</dd>
+      </dl>
+    </li>
+    <li class="card" data-section="정치">
+      <span class="badge">정치</span>
+      <a href="#">국회 개편안 국회 제출</a>
+      <dl>
+        <dt>기자</dt><dd>조채원</dd>
+        <dt>조회</dt><dd class="views">3,692</dd>
+      </dl>
+    </li>
+  </ul>
+
+</main>
+
+</div>
+
+</body>
+</html>
