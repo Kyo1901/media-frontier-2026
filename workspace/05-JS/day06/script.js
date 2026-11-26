@@ -75,3 +75,43 @@ form.addEventListener("submit", (e)=>{
     //  3. 숫자 데이터로 다뤄야할 경우 Number() 함수를 사용
     console.log("|" + q.value.trim() + "|");
 });
+
+
+// 카드 전체 탐색
+const cards = document.querySelectorAll(".card");
+
+
+// cards.addEventListener("click", (e) => { console.log("Card Clicked!"); });
+//  → addEventListener() 는 HTML 요소가 가진 기능이기 때문에
+//    NodeList 인 cards 는 없는 기능
+//  → 각 요소에 접근해서 이벤트를 연결
+
+// cards.forEach((c) => c.addEventListener("click", () => console.log("Card Clicked!")));
+
+for(const c of cards) {
+    c.addEventListener("click", () => console.log("Card Clicked!"));
+}
+
+const newCard = document.createElement("li");
+newCard.classList.add("card");
+newCard.innerText = "새 카드";
+list.appendChild(newCard);
+// → 새로운 카드는 이벤트 연결이 되지 못했다.
+// → 카드마다 이벤트를 연결하는 것이 아닌
+//   카드 목록인 ul 요소에 이벤트를 연결하고
+//   이벤트가 발생한 요소가 카드인지 검사
+
+// 이벤트 위임
+//  - 각 하위 요소마다 이벤트 등록하는 대신에
+//    상위 요소에서 한 번에 처리하는 방식
+
+list.addEventListener("click", (e) => {
+    // target 에서부터 상위 요소로 올라가면서 .card 요소를 탐색
+    //  → 있으면 해당 요소를 반환, 없으면 null 을 반환
+    const card = e.target.closest(".card");
+
+    // 카드가 없으면 종료
+    if(!card) return;
+
+    console.log(card.querySelector("a").innerText);
+});
