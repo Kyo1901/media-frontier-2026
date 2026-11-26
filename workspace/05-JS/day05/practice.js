@@ -170,7 +170,45 @@ console.log("[6]",
 //
 //  🔴 다 되면 화면을 보세요. 지금까지 콘솔에만 있던 것이 눈에 보입니다.
 
-// ← 여기
+const rows = [
+    { title: "여야 예산안 놓고 공방", section: "정치", views: 3562 },
+    { title: "미술관 전시 개막", section: "문화", views: 12217 },
+    { title: "국가대표 결승 진출", section: "스포츠", views: null },
+];
+
+list.textContent = "";                       // 있던 것을 비운다
+
+for (const r of rows) {
+    const card = document.createElement("li");
+    card.className = "card";
+
+    // ① span.badge 를 만들어 r.section 을 채우세요
+    const badge = document.createElement("span");
+    badge.classList.add("badge");
+    badge.innerText = r.section;
+
+    // ② a 를 만들어 r.title 을 채우세요 (href 는 "#")
+    const a = document.createElement("a");
+    a.href = "#";
+    a.innerText = r.title;
+
+    // ③ dd 를 만들고 className 을 "views" 로,
+    //    🔴 r.views 가 null 이면 "-" 로, 아니면 toLocaleString() 으로
+    //    (1일차 [3]·[4] 가 여기서 «화면»이 됩니다)
+    const views = document.createElement("dd");
+    views.classList.add("views");
+    views.innerText = r.views === null ? "-" : r.views.toLocaleString();
+
+    card.append(badge, a, views);
+    list.appendChild(card);
+}
+
+const newCardArray = [...document.querySelectorAll(".card")];
+
+console.log("[7]",
+    newCardArray.length,
+    newCardArray.map((c) => c.querySelector(".views").innerText).join(" / ")
+);
 
 
 // ── [8] 🔴 textContent 와 innerHTML — 제목에 태그가 들어 있으면 ──
@@ -219,4 +257,36 @@ console.log("[6]",
 //
 //  🔴 마지막 줄이 9일차 종합 화면의 모양입니다 — 거르고 · 다시 그린다.
 
-// ← 여기
+
+// 뉴스 카드를 만드는 함수
+//  1. 뉴스 데이터를 받고
+//  2. 화면에 표시할 카드를 생성
+//  3. 카드에 데이터를 삽입
+//  4. 카드 반환
+
+// function makeCard(section, title, views, reporter) { }
+// makeCard("정치", "여야 예산안 놓고 공방", 3562, "조재원");
+// makeCard(rows[0].section, rows[0].title, rows[0].views, rows[0].reporter);
+
+function makeCard({section, title, views, reporter}) { 
+    const li = document.createElement("li");
+    li.classList.add("li");
+
+    // 생성 및 삽입 메서드가 다루기 어렵다면
+    // 문자열 템플릿을 통해 HTML 마크업을 작성
+    const viewsStr= views === null ? "-" : views.toLocaleString();
+    const inner = `
+            <span class="badge">${section})</span>
+            <a href="#">${title}</a>
+            <dl>
+                <dt>기자</dt>
+                <dd>${reporter}</dd>
+                <dt>조회</dt>
+                <dd class="views">${viewsStr}</dd>
+            </dl>
+        `
+    return li;
+}
+
+console.log(makeCard(rows[0]));     // 완성 결과
+
