@@ -270,23 +270,42 @@ console.log("[7]",
 
 function makeCard({section, title, views, reporter}) { 
     const li = document.createElement("li");
-    li.classList.add("li");
+    li.classList.add("card");
 
-    // 생성 및 삽입 메서드가 다루기 어렵다면
+    // 생성 및 삽입 메서드(권장)가 다루기 어렵다면
     // 문자열 템플릿을 통해 HTML 마크업을 작성
     const viewsStr= views === null ? "-" : views.toLocaleString();
+    const reporterStr = reporter === null || reporter === undefined ? "-" : reporter;
     const inner = `
-            <span class="badge">${section})</span>
+            <span class="badge">${section}</span>
             <a href="#">${title}</a>
             <dl>
                 <dt>기자</dt>
-                <dd>${reporter}</dd>
+                <dd>${reporterStr}</dd>
                 <dt>조회</dt>
                 <dd class="views">${viewsStr}</dd>
             </dl>
         `
+    li.innerHTML = inner;
     return li;
 }
 
-console.log(makeCard(rows[0]));     // 완성 결과
+// console.log(makeCard(rows[0]));     // 완성 결과
 
+// 카드를 화면에 표시하는 함수
+//  → 화면에 표시할 뉴스 목록을 매개변수로 받는다.
+//  → 섹션별, 특정 개수, 조회수 순으로 보는 것이 하나의 함수로 가능
+function displayCard(rows) {
+    // 뉴스 카드를 표시하기에 앞서 기존 카드들을 제거
+    list.innerText = "";
+
+    // list.append(...rows.map(function makeCard (r) { /* r 을 이용하여 뉴스 카드 생성 */ }));
+    // list.append(...rows.map(function (r) { /* r 을 이용하여 뉴스 카드 생성 */ }));
+    // list.append(...rows.map( (r) => { /* r 을 이용하여 뉴스 카드 생성 */ }));
+    list.append(...rows.map( makeCard ));
+    // → 각 뉴스 데이터를 통해 카드를 만드는 것을 일반 함수로 정의했기 때문에
+    //   makeCard 함수의 코드를 전달
+}
+
+displayCard(rows);  // 전체 출력
+displayCard(rows.filter((r) => r.section==="정치"));    // 섹션이 정치인 기사 출력
