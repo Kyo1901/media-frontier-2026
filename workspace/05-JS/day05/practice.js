@@ -17,9 +17,16 @@
 //
 //  🔴 없는 것을 잡으면 오류가 납니까? 3일차 find 를 떠올려 보세요.
 //  출력 형식:  [1] ? ?
+const title =  document.querySelector("#title");
 
-// ← 여기
+const nothing = document.querySelector("#noting"); 
+// → 선택자를 잘못 지정한 경우 또는 요소가 만들어지지 않은 경우에는
+//   null 을 반환하기 때문에 이후에 문제가 될 수 있다.
+// → 탐색할 때는 오류가 발생하지 않기 때문에
+//   오류가 발생하고 난 뒤 원인을 찾기에는 오래 걸릴 수 있다.
 
+console.log("[1]", title.innerText, nothing);
+// nothing.style.color = "red";
 
 // ── [2] 여러 개 잡기 ───────────────────────────────────────
 //    · document.querySelectorAll(".card") 로 카드를 전부 잡으세요
@@ -28,7 +35,11 @@
 //  🔴 카드 «안»에서 다시 찾을 수 있습니다 — cards[0].querySelector("a")
 //  출력 형식:  [2] ? ?
 
-// ← 여기
+const cards = document.querySelectorAll(".card");
+
+// 첫 번째 카드의 a 태그의 글자
+//  → 순번을 지정하고 a 요소를 지정
+console.log("[2]", cards.length, cards[0].querySelector("a").innerText);
 
 
 // ── [3] 🔴 오늘의 함정 — 이건 배열이 아닙니다 ──────────────
@@ -44,7 +55,25 @@
 //  🔴 찍기 전에 넷을 종이에 적으세요. 어제 배운 것이 여기서 안 먹습니다.
 //  출력 형식:  [3] ? ? ? ?
 
-// ← 여기
+let includeMap = "";
+if (typeof cards.map === "function"){
+    includeMap = "포함";
+} else {
+    includeMap = "미포함";
+}
+
+const cardArray = [...cards];
+
+const titleArray = cardArray.map((c) => c.querySelector("a").innerText)
+
+console.log(
+    "[3]", 
+    Array.isArray(cards),       // false = cards 은 배열은 아니다. = NodeList
+    includeMap,
+    Array.isArray(cardArray),   // true = 전개를 통해 배열로 생성 
+    titleArray.length
+);
+
 
 
 // ── [4] 글자 바꾸기 ────────────────────────────────────────
@@ -55,8 +84,12 @@
 //  🔴 바꾼 «뒤»에 화면을 보세요. 실제로 바뀌어 있습니다.
 //  출력 형식:  [4] ? ?
 
-// ← 여기
+title.innerText = "정치";
 
+const count = document.querySelector("#count");
+count.innerText = `기사 ${cards.length}건`;
+
+console.log("[4]", title.innerText, count.innerText);
 
 // ── [5] 클래스 바꾸기 ──────────────────────────────────────
 //    · 첫 카드에 classList.add("hot") 을 하세요
@@ -67,7 +100,16 @@
 //     한 번 해보고 «되돌린 뒤» 답을 적으세요.
 //  출력 형식:  [5] ? ? ?
 
-// ← 여기
+cards[0].classList.add("hot");
+cards[0].classList.remove("hot");
+
+console.log(
+    "[5]",
+    cards[0].className,
+    cards[0].classList.contains("hot"),
+    document.querySelectorAll(".hot").length
+)
+
 
 
 // ── [6] 만들어 붙이기 ──────────────────────────────────────
@@ -81,7 +123,18 @@
 //  붙인 «뒤» #list 안의 li 개수와, 마지막 것의 글자를 한 줄에.
 //  출력 형식:  [6] ? ?
 
-// ← 여기
+const list = document.querySelector("#list");
+const li = document.createElement("li");
+li.classList.add("card");
+li.innerText = "새로 붙인 카드";
+
+list.appendChild(li);
+
+console.log("[6]",
+    document.querySelectorAll("#list > li.card").length,    // 4
+    cards.length,   // 3 → 처음 저장된 3개가 그대로이다. = 실시간 반영 X
+    list.lastElementChild.innerText // 새로 붙인 카드
+);
 
 
 // ── [7] 어제 rows 를 «화면에» 그립니다 ─────────────────────
