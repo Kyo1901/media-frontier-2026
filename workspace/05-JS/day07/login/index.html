@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <!-- class => 스타일을 지정하기 위해 -->
+    <!-- id    => JS 에서 조작하기 위해 -->
+
+    <!-- 로그인 카드 -->
+    <main class="login-card">
+        <h1 class="title">로그인</h1>
+        <p class="subtitle">계정 정보를 입력해 주세요.</p>
+
+        <form action="#" id="login-form">
+            <!-- 입력 필드를 하나의 영역으로 묶는다. -->
+            <div>
+                <label for="user-id">계정</label>
+                <input type="text" id="user-id" placeholder="아이디를 입력하세요." autocomplete="username">
+            </div>
+
+            <div>
+                <label for="user-pw">비밀번호</label>
+                <input type="password" id="user-pw" placeholder="비밀번호를 입력하세요." autocomplete="current-password">
+            </div>
+
+            <!-- 검증 결과 메세지 출력 영역 -->
+            <!--  - 계정과 비밀번호 입력 여부 -->
+            <p id="message" class="message">검증 결과 메세지 출력 영역</p>
+
+            <button type="submit" class="btn-login">로그인</button>
+        </form>
+
+        <div class="links">
+            <a href="#" id="link-signup">회원가입</a>
+            <a href="#" id="link-find">비밀번호 찾기</a>
+        </div>
+    </main>
+</body>
+</html>
