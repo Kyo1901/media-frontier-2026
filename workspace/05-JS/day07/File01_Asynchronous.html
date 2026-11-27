@@ -7,13 +7,59 @@
 </head>
 <body>
     <h1 id="header"></h1>
+    <!-- 
     <script>
         const header = document.querySelector("#header");
 
-        header.innerText = "출력 헤더";
+        header.innerHTML = "";
+        // 브라우저가 JS 의 코드를 수행
 
+        // 기본적으로는 싱글 스레드로 한 명이 모든일을 수행
+        header.innerHTML += "손님 입장<br>";
+        header.innerHTML += "손님 주문(커피, 라떼)<br>";
+
+        // 커피 제조(3s)
+        let end = Date.now() + 3000;    // 끝나는 시간
+        while(Date.now() < end) {
+            // 제조중
+        }
+        header.innerHTML += "커피 완성<br>";
+
+        // 라떼 제조
+        end = Date.now() + 3000;    // 끝나는 시간
+        while(Date.now() < end) {
+            // 제조중
+        }
+        header.innerHTML += "라떼 완성<br>";
+
+        // 라떼 제조
+        header.innerHTML += "모두 완성<br>";
+
+    </script>
+    -->
+
+    <script>
+        // 비동기 처리
+        //  - 특정 작업이 끝날때 까지 기다리지 않고
+        //    다음 코드를 먼저 실행하는 방식
+        //  - 예시
+        //     1. 타이머 기능 = 일정 시간 뒤에..., 일정 시간 마다...
+        //     2. 서버 통신
+        //     3. 이벤트 및 파일 처리
+
+        const header = document.querySelector("#header");
+        header.innerHTML = "";
+
+        header.innerHTML += "손님 입장<br>";
+        header.innerHTML += "손님 주문(커피, 라떼)<br>";
+
+        // 커피 제작을 알바생에게 맡긴다.
+        setTimeout(() => { header.innerHTML += "커피 완성<br>"}, 3000);
         
+        // 라떼 제작을 다른 알바생에게 맡긴다.
+        setTimeout(() => { header.innerHTML += "라떼 완성<br>"}, 3000);
 
+        header.innerHTML += "완성되길 기다리는 중...<br>";
     </script>
 </body>
 </html>
